@@ -13,10 +13,17 @@
 
 
 Route::get('/', function () {
+<<<<<<< HEAD
     return view('admin/index');
 });
 Route::get('index', function () {
     return view('welcome');
+=======
+    return view('index');
+});
+Route::get('index', function () {
+    return view('index');
+>>>>>>> initial
 });
 
 Route::get('login', array('as' => 'login', function () {

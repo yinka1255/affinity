@@ -47,11 +47,11 @@ class UserController extends Controller{
 
     		$user = Auth::user();
 
-            if($user->status != '1'){
+            /*if($user->status != '1'){
                 Session::flash('error', 'One last step! Pls go to ur email and click the link we sent you');
         
                 return back();
-            }   
+            } */  
 
     		return redirect('profile')->with('user', $user);
 
