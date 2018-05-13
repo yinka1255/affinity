@@ -26,6 +26,10 @@ class Admin extends Model
 
     public $incrementing = false;
 
+    public $timestamps = false;
+
+	public $remember_token=false;
+
     /**
      * A Customer can have many interests.
      * Get interests associated with the customer.

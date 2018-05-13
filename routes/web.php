@@ -13,17 +13,10 @@
 
 
 Route::get('/', function () {
-<<<<<<< HEAD
     return view('admin/index');
 });
 Route::get('index', function () {
     return view('welcome');
-=======
-    return view('index');
-});
-Route::get('index', function () {
-    return view('index');
->>>>>>> initial
 });
 
 Route::get('login', array('as' => 'login', function () {
@@ -31,5 +24,9 @@ Route::get('login', array('as' => 'login', function () {
 }));
 
 Route::post('login','UserController@login');
+
+Route::get('admin/admin', 'AdminController@index');
+
+Route::post('admin/create_admin','AdminController@create');
 
 //});	
