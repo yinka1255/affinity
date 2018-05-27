@@ -167,12 +167,12 @@ class MerchantsController extends Controller
         $user = Admin::where('admin_id', $user->details_id)->first();
 
         $merchant = Merchant::where('id', $id)->first();
-        
+        $countries = Location::distinct()->get(['country']);
         $offers = DB::table('merchant_offers')->where('merchant_id', $merchant->merchant_id)->get()->toArray();
         $categories = MerchantCategory::orderBy('category_id', 'desc')->get();
         $states = Location::select('state')->distinct()->get();
 
-        return view('admin_merchant_edit')->with(['user'=> $user, 'merchant'=> $merchant, 'offers'=> $offers, 'gallery'=> $gallery, 'categories'=> $categories, 'states'=> $states]);
+        return view('admin_merchant_edit')->with(['user'=> $user, 'merchant'=> $merchant, 'countries'=> $countries, 'offers'=> $offers, 'gallery'=> $gallery, 'categories'=> $categories, 'states'=> $states]);
     }
 
     /**
@@ -262,6 +262,12 @@ class MerchantsController extends Controller
         $merchant->website = $request->input('website');
 
         $merchant->details = $request->input('details');
+
+        $merchant->country = $request->input('country');
+        
+        $merchant->bio = $request->input('bio');
+
+        $merchant->ntk = $request->input('ntk');
 		
 		$merchant->state = $request->input('state');
 		

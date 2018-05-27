@@ -57,6 +57,7 @@
                           <th>Avatar</th>
                           <th>Name</th>
                           <th>Venue</th>
+                          <th>Price</th>
                           <th>Date</th>
                           <th>Action</th>
                         </tr>
@@ -73,6 +74,7 @@
                           </td>
                           <td>{!! $experience->experience_name !!}</td>
                           <td>{!! $experience->venue !!}</td>
+                          <td>{!! $experience->price !!}</td>
                           <td>{!! $experience->experience_start_date !!} to {!! $experience->experience_end_date !!}</td>
                           <td>
                             <a class="btn btn-default btn-success source" href="admin_experience_edit/{!! $experience->experience_id !!}"><i class="fa fa-pencil"></i>Edit</a>

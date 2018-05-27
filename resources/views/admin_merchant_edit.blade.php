@@ -171,7 +171,7 @@
                           <div class="col-md-9 col-sm-9 col-xs-9">
                             <select class="select2_single form-control"  name="state" tabindex="-1">
                             <option value="{{$merchant->state}}">{{$merchant->state}}</option> 
-                              {{-@foreach ($states as $state) 
+                              {{--@foreach ($states as $state) 
                               <option value="{{$state->state}}">{{$state->state}}</option> 
                               @endforeach --}}
                             </select>  
@@ -231,7 +231,7 @@
                         <div class="form-group">
                           <label class="control-label col-md-3 col-sm-3 col-xs-3">Bio</label>
                           <div class="col-md-9 col-sm-9 col-xs-9">
-                          <textarea type="text" name="bio" class="resizable_textarea form-control" required placeholder="Bio here..."></textarea>
+                          <textarea type="text" name="bio" class="resizable_textarea form-control" required placeholder="Bio here...">{!! $merchant->bio !!}</textarea>
                             <span class="fa fa-tag form-control-feedback right" aria-hidden="true"></span>
                           </div>
                         </div>
@@ -240,7 +240,7 @@
                         <div class="form-group">
                           <label class="control-label col-md-3 col-sm-3 col-xs-3">Need to know</label>
                           <div class="col-md-9 col-sm-9 col-xs-9">
-                          <textarea type="text" name="ntk" class="resizable_textarea form-control" required placeholder="Need to know here..."></textarea>
+                          <textarea type="text" name="ntk" class="resizable_textarea form-control" required placeholder="Need to know here...">{!! $merchant->ntk !!}</textarea>
                             <span class="fa fa-tag form-control-feedback right" aria-hidden="true"></span>
                           </div>
                         </div> 

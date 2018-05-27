@@ -82,7 +82,10 @@
                           <td>{!! $merchant->rating !!}</td>
                           <td>{!! $merchant->address !!}</td>
                           <td>{!! $merchant->created_at !!}</td>
-                          <td><a class="btn btn-default btn-success source" href="admin_merchant_edit/{!! $merchant->id !!}"><i class="fa fa-pencil"></i>Edit</a></td>
+                          <td>
+                          <a class="btn btn-default btn-success source" href="admin_merchant_edit/{!! $merchant->id !!}"><i class="fa fa-pencil"></i></a>
+                          <button class="btn btn-default btn-success source" onclick='openMyModal(<?php echo json_encode($merchant); ?>)' ><i class="fa fa-eye"></i></button>
+                          </td>
                         </tr>
                       @endforeach  
                       </tbody>
@@ -106,6 +109,56 @@
       </div>
     </div>
     @include("includes.admin-index-footer-script")
-    
+    <script>
+      var myData;
+      function openMyModal(data){
+        document.getElementById('modal-button').click();
+        document.getElementById('title').innerHTML = data.name + ' <p style="color: #b33857;font-size: 12px;font-weight: 600;">From ' + data.start_date + ' To ' + data.end_date +'</p>';
+        document.getElementById('body-1').innerHTML = '<img src="public/' + data.avatar + '"  style="width:100% !important; height:auto;" >';
+        document.getElementById('body-2').innerHTML = data.country + ', ' + data.state + ' '  + data.city + ', ' + data.address; 
+        document.getElementById('body-3').innerHTML = data.contact;
+        document.getElementById('body-4').innerHTML = data.details; 
+        document.getElementById('body-5').innerHTML = data.bio; 
+        document.getElementById('body-6').innerHTML = data.ntk; 
+        document.getElementById('body-7').innerHTML = data.website; 
+      }
+    </script>
+    <button type="hidden" id="modal-button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+  
   </body>
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="title"> </h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-3">
+              <div id="body-1"></div>
+            </div>
+            <div class="col-md-9">
+                <h5><b>Address<b/></h4>
+                <p id="body-2"></p>
+                <h5><b>Phone<b/></h4>
+                <p id="body-3"></p>
+                <h5><b>Website<b/></h4>
+                <p id="body-7"></p>
+                <h5><b>Details<b/></h4>
+                <p id="body-4"></p>
+                <h5><b>Bio<b/></h4>
+                <p id="body-5"></p>
+                <h5><b>Need to know<b/></h4>
+                <p id="body-6"></p>
+          </div>  
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </html>

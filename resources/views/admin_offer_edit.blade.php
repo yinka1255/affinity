@@ -57,6 +57,18 @@
                   <div class="x_content">
                     <form class="form-horizontal form-label-left" method="post" enctype="multipart/form-data" action="../admin_offer_update">
                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-3">Offer Type</label>
+                        <div class="col-md-9 col-sm-9 col-xs-9">
+                          <select class="select2_single form-control" id="offer_type"  name="offer_type" tabindex="-1">
+                            <option>{!!$offer->offer_type !!}</option>
+                            <option>Percentage discount</option> 
+                            <option>Amount discount</option> 
+                            <option>Complementary</option> 
+                          </select>  
+                          <span class="fa fa-map-marker form-control-feedback right" aria-hidden="true"></span>
+                        </div>
+                      </div>
+                    <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-3">Offer(Number only</label>
                         <div class="col-md-9 col-sm-9 col-xs-9">
                           <input type="number" name="offer_name" value="{!!$offer->offer_name !!}" placeholder="Ex: 10 for 10% discount" class="form-control" required>

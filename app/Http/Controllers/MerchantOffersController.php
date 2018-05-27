@@ -69,6 +69,8 @@ class MerchantOffersController extends Controller
 
         $offer->offer_name = $request->input('offer_name');
 
+        $offer->offer_type = $request->input('offer_type');
+
         $offer->tagline = $request->input('tagline');
 
         $offer->start_date = substr( $request->input('date'), 0, strrpos($request->input('date'), '-' ) );
@@ -160,6 +162,8 @@ class MerchantOffersController extends Controller
         }
 
         $offer->offer_name = $request->input('offer_name');
+
+        $offer->offer_type = $request->input('offer_type');
 
         $offer->tagline = $request->input('tagline');
 

@@ -73,11 +73,21 @@
                   </div>
                   <div class="x_content">
                     <form class="form-horizontal form-label-left" method="post" enctype="multipart/form-data" action="../admin_offer_store">
-
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-3">Offer(Number only</label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-3">Offer Type</label>
                         <div class="col-md-9 col-sm-9 col-xs-9">
-                          <input type="number" name="offer_name" placeholder="Ex: 10 for 10% discount" class="form-control" required>
+                          <select class="select2_single form-control" id="offer_type"  name="offer_type" tabindex="-1">
+                            <option>Percentage discount</option> 
+                            <option>Amount discount</option> 
+                            <option>Complementary</option> 
+                          </select>  
+                          <span class="fa fa-map-marker form-control-feedback right" aria-hidden="true"></span>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-3">Offer</label>
+                        <div class="col-md-9 col-sm-9 col-xs-9">
+                          <input type="number" name="offer_name" class="form-control" required>
                           <span class="fa fa-tag form-control-feedback right" aria-hidden="true"></span>
                         </div>
                       </div>    

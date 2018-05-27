@@ -68,9 +68,8 @@
                         <div class="col-md-9 col-sm-9 col-xs-9">
                           <select class="select2_single form-control"  name="event_type" tabindex="-1" required>
                           <option disabled>Select Type</option>
-                            <option>Ordinary</option> 
-                            <option>Vip Private Parties</option> 
-                            <option>Vip Global Events</option> 
+                            <option>Paid</option> 
+                            <option>Free</option> 
                           </select>  
                           <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
                         </div>
