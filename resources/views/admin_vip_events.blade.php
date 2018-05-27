@@ -40,7 +40,7 @@
                 @endif
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Events <small>Lists</small></h2>
+                    <h2>Global VIP Events <small>Lists</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       </li>
                       <li class="dropdown">

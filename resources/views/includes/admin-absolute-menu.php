@@ -46,6 +46,10 @@
                       <li><a href="../admin_waitlisted_product_requests">Waitlisted Product Requests</a></li>
                     </ul>
                   </li>
+                  <li><a href="../admin_global_vip_events"><i class="fa fa-calendar"></i> Global Vip Events </a>
+                  </li>
+                  <li><a href="../admin_private_vip_parties"><i class="fa fa-calendar"></i> Private Vip Parties </a>
+                  </li>
                   <li><a><i class="fa fa-product-hunt"></i> Bespoke Product <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="../admin_bespoke_products">Bespoke Product</a></li>

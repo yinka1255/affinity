@@ -37,6 +37,9 @@ Route::post('admin_group_update', 'GroupsController@update')->middleware('auth')
 
 Route::post('admin_upload_group_gallery', 'GroupsController@upload')->middleware('auth');
 
+Route::get('admin_global_vip_events', 'GlobalEventsController@index')->middleware('auth');
+
+Route::get('admin_global_vip_events_new', 'GlobalEventsController@NewVipEvent')->middleware('auth');
 
 Route::get('admin_events', 'EventsController@index')->middleware('auth');
 
