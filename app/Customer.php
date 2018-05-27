@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
@@ -11,25 +12,18 @@ class Customer extends Model
      *
      * @var array
      */
-    protected $fillable = [
-    	'firstname',
-        'surname',
-        'email',
-        'phone',
-        'address',
-        'gender',
-        'street',
-        'state',
-        'lga',
-        'branch',
-        'bet9ja_id',
-        'bet9ja_code',
-        'user_id',	
-    ];
 
+    use Notifiable;
+    
     protected $primaryKey = 'id';
 
     public $incrementing = false;
+
+    public $timestamps = false;
+
+	public $remember_token=false;
+
+    protected $table = 'customers';
 
     /**
      * A Customer can have many interests.

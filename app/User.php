@@ -46,12 +46,29 @@ class User extends Authenticatable
 		
 		$user = User::where('username', $username)->first();
 
-			if($user != null){
-				return true;
-			}else{
-				return false;
-			}	
-	}	
+        if($user != null){
+            return true;
+        }else{
+            return false;
+        }	
+    }	
+    
+
+    public function banks() {
+        return $this->hasMany('App\Bank');
+    }
+
+    public function customers() {
+        return $this->hasOne('App\Customer');
+    }
+
+    public static function confirmUsername($username)
+    {
+        //
+        $user = User::where('username',$username)->first();
+
+        return $user;
+    }  
 
 
 	
