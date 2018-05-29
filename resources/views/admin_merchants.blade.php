@@ -123,7 +123,7 @@
         document.getElementById('body-7').innerHTML = data.website; 
       }
     </script>
-    <button type="hidden" id="modal-button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+    <button type="hidden" id="modal-button" " data-toggle="modal" data-target="#myModal">Open Modal</button>
   
   </body>
   <div id="myModal" class="modal fade" role="dialog">

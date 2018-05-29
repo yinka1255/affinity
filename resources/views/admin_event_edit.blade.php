@@ -82,9 +82,8 @@
                         <div class="col-md-9 col-sm-9 col-xs-9">
                           <select class="select2_single form-control"  name="event_type" tabindex="-1" required>
                             <option value="{{$event->event_type}}">{{$event->event_type}}</option> 
-                            <option>Ordinary</option> 
-                            <option>Vip Private Parties</option> 
-                            <option>Vip Global Events</option> 
+                            <option>Paid</option> 
+                            <option>Free</option> 
                           </select>  
                           <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
                         </div>
@@ -171,7 +170,7 @@
                     <div class="row">
                       <form id="uploadForm" action="../admin_upload_event_gallery" method="post" enctype="multipart/form-data">
                         <input type="file" id="avatar" style="visibility: hidden;" onchange="submitGallery()" name="avatar">
-                        <input type="hidden" class="form-control" value="{!! $event->event_id !!}" name="event_id" required>
+                        <input type="hidden" value="{!! $event->event_id !!}" name="event_id" required>
                       </form>
                       @foreach ($gallery as $dGallery) 
                       <div class="col-md-4" style="margin-bottom: 10px;">

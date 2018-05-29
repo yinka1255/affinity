@@ -17,6 +17,8 @@ Route::get('login', function () {
 
 Route::get('/', 'AdminsController@index')->middleware('auth');
 
+Route::get('/index', 'AdminsController@index')->middleware('auth');
+
 Route::get('admin', 'AdminsController@index')->middleware('auth');
 
 Route::get('admin_admins', 'AdminsController@admins')->middleware('auth');
@@ -39,7 +41,29 @@ Route::post('admin_upload_group_gallery', 'GroupsController@upload')->middleware
 
 Route::get('admin_global_vip_events', 'GlobalEventsController@index')->middleware('auth');
 
-Route::get('admin_global_vip_events_new', 'GlobalEventsController@NewVipEvent')->middleware('auth');
+Route::get('admin_global_vip_event_new', 'GlobalEventsController@NewGlobalVipEvent')->middleware('auth');
+
+Route::get('admin_global_vip_event_edit/{id}', 'GlobalEventsController@editGlobalVipEvent')->middleware('auth');
+
+Route::post('admin_global_vip_event_store', 'GlobalEventsController@store')->middleware('auth');
+
+Route::post('admin_global_vip_event_update', 'GlobalEventsController@update')->middleware('auth');
+
+Route::post('admin_upload_global_vip_event_gallery', 'GlobalEventsController@upload')->middleware('auth');
+
+Route::get('admin_private_parties', 'PrivatePartiesController@index')->middleware('auth');
+
+Route::get('admin_private_party_new', 'PrivatePartiesController@NewPrivateParty')->middleware('auth');
+
+Route::get('admin_private_party_edit/{id}', 'PrivatePartiesController@editPrivateParty')->middleware('auth');
+
+Route::post('admin_private_party_store', 'PrivatePartiesController@store')->middleware('auth');
+
+Route::post('admin_private_party_update', 'PrivatePartiesController@update')->middleware('auth');
+
+Route::post('admin_upload_private_party_gallery', 'PrivatePartiesController@upload')->middleware('auth');
+
+
 
 Route::get('admin_events', 'EventsController@index')->middleware('auth');
 
@@ -116,6 +140,28 @@ Route::post('admin_bespoke_product_request_update_admin', 'BespokeProductsContro
 Route::post('admin_bespoke_product_request_update_status', 'BespokeProductsController@updateStatus')->middleware('auth');
 
 
+Route::get('admin_private_party_requests', 'PrivatePartiesController@requests')->middleware('auth');
+
+Route::post('admin_private_party_update_admin', 'PrivatePartiesController@updateAdmin')->middleware('auth');
+
+Route::post('admin_private_party_update_status', 'PrivatePartiesController@updateStatus')->middleware('auth');
+
+Route::get('admin_global_vip_events_requests', 'GlobalEventsController@requests')->middleware('auth');
+
+Route::post('admin_global_vip_event_update_admin', 'GlobalEventsController@updateAdmin')->middleware('auth');
+
+Route::post('admin_global_vip_event_update_status', 'GlobalEventsController@updateStatus')->middleware('auth');
+
+Route::get('admin_flight_booking_requests', 'FlightBookingsController@requests')->middleware('auth');
+
+Route::post('admin_flight_booking_update_admin', 'FlightBookingsController@updateAdmin')->middleware('auth');
+
+Route::post('admin_flight_booking_update_status', 'FlightBookingsController@updateStatus')->middleware('auth');
+
+
+
+
+
 Route::get('admin_vpas', 'VpasController@index')->middleware('auth');
 
 Route::post('admin_vpa_update_admin', 'VpasController@updateAdmin')->middleware('auth');
@@ -160,6 +206,47 @@ Route::post('admin_experience_store', 'ExperiencesController@store')->middleware
 Route::post('admin_experience_update', 'ExperiencesController@update')->middleware('auth');
 
 Route::post('admin_upload_experience_gallery', 'ExperiencesController@upload')->middleware('auth');
+
+
+Route::get('admin_luxury_experiences', 'LuxuryExperiencesController@index')->middleware('auth');
+
+Route::get('admin_luxury_experience_new', 'LuxuryExperiencesController@newExperiences')->middleware('auth');
+
+Route::get('admin_luxury_experience_edit/{id}', 'LuxuryExperiencesController@editExperiences')->middleware('auth');
+
+Route::post('admin_luxury_experience_store', 'LuxuryExperiencesController@store')->middleware('auth');
+
+Route::post('admin_luxury_experience_update', 'LuxuryExperiencesController@update')->middleware('auth');
+
+Route::post('admin_upload_luxury_experience_gallery', 'LuxuryExperiencesController@upload')->middleware('auth');
+
+Route::get('admin_luxury_experiences_requests', 'LuxuryExperiencesController@requests')->middleware('auth');
+
+Route::post('admin_luxury_experience_update_admin', 'LuxuryExperiencesController@updateAdmin')->middleware('auth');
+
+Route::post('admin_luxury_experience_update_status', 'LuxuryExperiencesController@updateStatus')->middleware('auth');
+
+
+
+Route::get('admin_rentals', 'RentalsController@index')->middleware('auth');
+
+Route::get('admin_rental_new', 'RentalsController@newRentals')->middleware('auth');
+
+Route::get('admin_rental_edit/{id}', 'RentalsController@editRentals')->middleware('auth');
+
+Route::post('admin_rental_store', 'RentalsController@store')->middleware('auth');
+
+Route::post('admin_rental_update', 'RentalsController@update')->middleware('auth');
+
+Route::post('admin_upload_rental_gallery', 'RentalsController@upload')->middleware('auth');
+
+Route::get('admin_rentals_requests', 'RentalsController@requests')->middleware('auth');
+
+Route::post('admin_rental_update_admin', 'RentalsController@updateAdmin')->middleware('auth');
+
+Route::post('admin_rental_update_status', 'RentalsController@updateStatus')->middleware('auth');
+
+
 
 Route::post('get_state', 'LocationsController@getState')->middleware('auth');
 

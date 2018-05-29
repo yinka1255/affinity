@@ -35,20 +35,45 @@
                   </li>
                   <li><a href="../admin_experiences"><i class="fa fa-fire"></i> Experiences </a>
                   </li>
-                  <li><a><i class="fa fa-shopping-cart"></i> Tickets <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="../admin_luxury_experiences"><i class="fa fa-fire"></i> Luxury Travels </a>
+                  </li>
+                  <li><a href="../admin_rentals"><i class="fa fa-car"></i> Luxury Rentals & Charters </a>
+                  </li>
+                  <li><a href="../admin_rentals_requests"><i class="fa fa-car"></i> Luxury R & C Requests </a>
+                  </li>
+                  <li><a href="admin_vpas"><i class="fa fa-bookmark"></i> VPAs (Phoenix) </a>
+                  </li>
+                  <li><a><i class="fa fa-plane"></i> Travels <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="../admin_vpas">Vpas</a></li>
                       <li><a href="../admin_airport_concierge">Airport Concierge Requests</a></li>
-                      <li><a href="../admin_bespoke_travel">Bespoke Travel Requests</a></li>
-                      <li><a href="../admin_personal_shoppings">Personal Shopper Requests</a></li>
-                      <li><a href="../admin_wardrobe_stylings">Wardrobe Styling Requests</a></li>
-                      <li><a href="../admin_bespoke_product_requests">Bespoke Product Requests</a></li>
-                      <li><a href="../admin_waitlisted_product_requests">Waitlisted Product Requests</a></li>
+                      <li><a href="../admin_bespoke_travel">Bespoke Travel</a></li>
+                      <li><a href="../admin_luxury_experiences_requests">Luxury Travel Requests</a></li>
+                      <li><a href="../admin_flight_booking_requests">Flight Bookings</a></li>
                     </ul>
                   </li>
-                  <li><a href="../admin_global_vip_events"><i class="fa fa-calendar"></i> Global Vip Events </a>
+                  <li><a><i class="fa fa-universal-access"></i> VIP Access Requests<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="../admin_global_vip_events_requests">VIP Global Events Requests</a></li>
+                      <li><a href="../admin_private_party_requests">Private party Requests</a></li>
+                    </ul>
                   </li>
-                  <li><a href="../admin_private_vip_parties"><i class="fa fa-calendar"></i> Private Vip Parties </a>
+                  <li><a><i class="fa fa-shopping-cart"></i> Procurement Requests<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="../admin_waitlisted_product_requests">Waitlisted Products</a></li>
+                      <li><a href="../admin_bespoke_product_requests">Bespoke Product Requests</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-female"></i> P. Styling Requests<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="../admin_personal_shoppings">Personal Shopper</a></li>
+                      <li><a href="../admin_wardrobe_stylings">Wardrobe Styling</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-calendar"></i> VIP Events<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="../admin_global_vip_events">Global VIP Events</a></li>
+                      <li><a href="../admin_private_parties">Private Parties</a></li>
+                    </ul>
                   </li>
                   <li><a><i class="fa fa-product-hunt"></i> Bespoke Product <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">

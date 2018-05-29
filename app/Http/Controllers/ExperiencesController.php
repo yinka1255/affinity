@@ -35,9 +35,9 @@ class ExperiencesController extends Controller
         $user = Auth::user();
         $user = Admin::where('admin_id', $user->details_id)->first();
 
-        $states = Location::where('country', 'Nigeria')->select('state')->orderBy('state', 'asc')->distinct()->get();
+        $countries = Location::distinct()->get(['country']);
 
-        return view('admin_experience_new')->with(['user'=> $user, 'states'=> $states]);
+        return view('admin_experience_new')->with(['user'=> $user, 'countries'=> $countries]);
     }
 
     public function editExperiences($id){
@@ -47,12 +47,11 @@ class ExperiencesController extends Controller
         $user = Admin::where('admin_id', $user->details_id)->first();
         
         $members_joined = DB::table('customer_experiences')->where('experience_id', $id)->join('customers','customers.customer_id','=','customer_experiences.customer_id')->select('customers.*', 'customers.avatar as customer_avatar', 'customer_experiences.*')->get()->toArray();
-
-        $states = Location::where('country', 'Nigeria')->select('state')->orderBy('state', 'asc')->distinct()->get();
+        $countries = Location::distinct()->get(['country']);
         $experience = Experience::where('experience_id', $id)->first();
 		
         
-        return view('admin_experience_edit')->with(['user'=> $user, 'members_joined'=> $members_joined,'gallery'=> $gallery, 'states'=> $states, 'experience'=> $experience]);
+        return view('admin_experience_edit')->with(['user'=> $user, 'members_joined'=> $members_joined,'gallery'=> $gallery, 'countries'=> $countries, 'experience'=> $experience]);
     }
 
     /**

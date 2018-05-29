@@ -87,7 +87,7 @@
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-3">Offer</label>
                         <div class="col-md-9 col-sm-9 col-xs-9">
-                          <input type="number" name="offer_name" class="form-control" required>
+                          <input type="text" name="offer_name" class="form-control" required>
                           <span class="fa fa-tag form-control-feedback right" aria-hidden="true"></span>
                         </div>
                       </div>    

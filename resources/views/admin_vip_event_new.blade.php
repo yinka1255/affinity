@@ -11,7 +11,21 @@
     <title>Admin | The Affinity Club </title>
 
     @include("includes.admin-index-head")
-
+    <script>
+      function getStates(){
+        console.log(document.getElementById('country').value);
+            $.post("get_state",
+            {
+                country: document.getElementById('country').value
+            },
+            function(data, status){
+              console.log(data);
+              $.each(data.states, function(i, d) {
+                $('#state').append('<option value="' + d.state + '">' + d.state + '</option>');
+              });
+            });
+      }
+    </script>
   </head>
 
   <body class="nav-md">
@@ -44,55 +58,55 @@
                   @endif
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Event <small>Add</small></h2>
+                    <h2>Global VIP Event <small>Add</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       </li>
                       <li class="dropdown">
-                        <a href="admin_events"><i class="fa fa-calendar"></i> List Events</a>
+                        <a href="admin_global_vip_events"><i class="fa fa-calendar"></i> List Global VIP Events</a>
                       </li>
                     </ul>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <form class="form-horizontal form-label-left" method="post" enctype="multipart/form-data" action="admin_event_store">
+                    <form class="form-horizontal form-label-left" method="post" enctype="multipart/form-data" action="admin_global_vip_event_store">
 
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-3">Name</label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-3">Title</label>
                         <div class="col-md-9 col-sm-9 col-xs-9">
-                          <input type="text" name="name" class="form-control" required>
-                          <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                          <input type="text" name="title" class="form-control" required>
+                          <span class="fa fa-bookmark form-control-feedback right" aria-hidden="true"></span>
                         </div>
                       </div> 
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-3">Type </label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-3">Country</label>
                         <div class="col-md-9 col-sm-9 col-xs-9">
-                          <select class="select2_single form-control"  name="event_type" tabindex="-1" required>
-                          <option disabled>Select Type</option>
-                            <option>Paid</option> 
-                            <option>Free</option> 
-                          </select>  
-                          <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
-                        </div>
-                      </div>                     
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-3">Interest Group </label>
-                        <div class="col-md-9 col-sm-9 col-xs-9">
-                          <select class="select2_single form-control"  name="group_id" tabindex="-1" required>
-                          <option disabled>Select Group</option>
-                            @foreach ($groups as $group) 
-                            <option value="{{$group->group_id}}">{{$group->name}}</option> 
+                          <select class="select2_single form-control" onchange="getStates()" id="country" name="country" tabindex="-1">
+                            @foreach ($countries as $country) 
+                            <option value="{{$country->country}}">{{$country->country}}</option> 
                             @endforeach
                           </select>  
-                          <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                          <span class="fa fa-map-marker form-control-feedback right" aria-hidden="true"></span>
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-3">Location</label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-3">State</label>
                         <div class="col-md-9 col-sm-9 col-xs-9">
-                          <input type="text" name="location" class="form-control" required>
+                          <select class="select2_single form-control" id="state"  name="state" tabindex="-1">
+                            {{--@foreach ($states as $state) 
+                            <option value="{{$state->state}}">{{$state->state}}</option> 
+                            @endforeach --}}
+                          </select>  
+                          <span class="fa fa-map-marker form-control-feedback right" aria-hidden="true"></span>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-3">City</label>
+                        <div class="col-md-9 col-sm-9 col-xs-9">
+                          <input type="text" name="city" class="form-control" required>
                           <span class="fa fa-map-marker form-control-feedback right" aria-hidden="true"></span>
                         </div>
                       </div>  
+                      
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-3">Capacity</label>
                         <div class="col-md-9 col-sm-9 col-xs-9">
@@ -119,9 +133,9 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-3">Description</label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-3">Details</label>
                         <div class="col-md-9 col-sm-9 col-xs-9">
-                          <textarea type="text" name="description" class="resizable_textarea form-control" required placeholder="Details here..."></textarea>
+                          <textarea type="text" name="details" class="resizable_textarea form-control" required placeholder="Details here..."></textarea>
                         </div>
                       </div>
                       

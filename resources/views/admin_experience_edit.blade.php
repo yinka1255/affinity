@@ -111,15 +111,25 @@
                         </div>
                       </div>  
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-3">State</label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-3">Country</label>
                         <div class="col-md-9 col-sm-9 col-xs-9">
-                          <select class="select2_single form-control"  name="state" tabindex="-1">
-                          <option value="{{$experience->state}}">{{$experience->state}}</option> 
-                            @foreach ($states as $state) 
-                            <option value="{{$state->state}}">{{$state->state}}</option> 
+                          <select class="select2_single form-control" onchange="getStates()" id="country" name="country" tabindex="-1">
+                            @foreach ($countries as $country) 
+                            <option value="{{$country->country}}">{{$country->country}}</option> 
                             @endforeach
                           </select>  
-                          <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                          <span class="fa fa-map-marker form-control-feedback right" aria-hidden="true"></span>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-3">State</label>
+                        <div class="col-md-9 col-sm-9 col-xs-9">
+                          <select class="select2_single form-control" id="state"  name="state" tabindex="-1">
+                            {{-- @foreach ($states as $state) 
+                            <option value="{{$state->state}}">{{$state->state}}</option> 
+                            @endforeach --}}
+                          </select>  
+                          <span class="fa fa-map-marker form-control-feedback right" aria-hidden="true"></span>
                         </div>
                       </div>
                       <div class="form-group">

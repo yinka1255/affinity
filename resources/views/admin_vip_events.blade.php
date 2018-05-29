@@ -44,7 +44,7 @@
                     <ul class="nav navbar-right panel_toolbox">
                       </li>
                       <li class="dropdown">
-                        <a href="admin_event_new"><i class="fa fa-plus"></i> New Event</a>
+                        <a href="admin_global_vip_event_new"><i class="fa fa-plus"></i> New Global Event</a>
                       </li>
                     </ul>
                     <div class="clearfix"></div>
@@ -55,13 +55,12 @@
                       <thead>
                         <tr>
                           <th>Avatar</th>
-                          <th>Name</th>
-                          <th>Type</th>
+                          <th>Title</th>
                           <th>Location</th>
-                          <th>Group</th>
-                          <th> Start Date </th>
-                          <th> End Date </th>
-                          <th> Action </th>
+                          <th>Start Date </th>
+                          <th>End Date </th>
+                          <th>Capacity </th>
+                          <th>Action </th>
                         </tr>
                       </thead>
 
@@ -74,14 +73,13 @@
                               <img src="public/{{ $event->avatar or 'images/profile.png'}}" style="width:60px !important; height:60px;" alt="..." class="img-circle profile_img">
                             </div>
                           </td>
-                          <td>{!! $event->name !!}</td>
-                          <td>{!! $event->event_type !!}</td>
-                          <td>{!! $event->location !!}</td>
-                          <td>{!! $event->group_name !!}</td>
+                          <td>{!! $event->title !!}</td>
+                          <td>{!! $event->country !!} {!! $event->state !!} {!! $event->city !!}</td>
                           <td>{!! $event->date !!}</td>
                           <td>{!! $event->end_date !!}</td>
+                          <td>{!! $event->capacity !!}</td>
                           <td>
-                            <a class="btn btn-default btn-success source" href="admin_event_edit/{!! $event->event_id !!}"><i class="fa fa-pencil"></i></a>
+                            <a class="btn btn-default btn-success source" href="admin_global_vip_event_edit/{!! $event->id !!}"><i class="fa fa-pencil"></i></a>
                             <button class="btn btn-default btn-success source" onclick='openMyModal(<?php echo json_encode($event); ?>)' ><i class="fa fa-eye"></i></button>
                           </td>
                         </tr>
@@ -112,13 +110,14 @@
       var myData;
       function openMyModal(data){
         document.getElementById('modal-button').click();
-        document.getElementById('title').innerHTML = data.name + '   <p style="color: #b33857;font-size: 12px;font-weight: 600;">From ' + data.date + ' To ' + data.end_date +'</p>';
+        document.getElementById('title').innerHTML = data.title + '   <p style="color: #b33857;font-size: 12px;font-weight: 600;">From ' + data.date + ' To ' + data.end_date +'</p>';
         document.getElementById('body-1').innerHTML = '<img src="public/' + data.avatar + '"  style="width:100% !important; height:auto;" >';
-        document.getElementById('body-2').innerHTML = data.description; 
+        document.getElementById('body-2').innerHTML = data.details; 
+        document.getElementById('body-3').innerHTML = '<p style="color: #b33857;font-size: 12px;font-weight: 600;">Capacity: ' + data.capacity + '</p>'; 
       }
     </script>
 
-    <button type="hidden" id="modal-button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+    <button type="hidden" id="modal-button" data-toggle="modal" data-target="#myModal">Open Modal</button>
     
   </body>
 
@@ -138,6 +137,7 @@
             <div class="col-md-9">
                 <h4>Description</h4>
                 <p id="body-2"></p>
+                <p id="body-3"></p>
             </div>
           </div>  
         </div>

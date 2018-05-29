@@ -62,7 +62,7 @@
                     <ul class="nav navbar-right panel_toolbox">
                       </li>
                       <li class="dropdown">
-                        <a href="../admin_groups"><i class="fa fa-group"></i> List Interests</a>
+                        <a href="../admin_group_posts/{!! $group->group_id !!}" style="color: #800020;"><i class="fa fa-group"></i> INTEREST POSTS</a>
                       </li>
                     </ul>
                     <div class="clearfix"></div>
@@ -124,7 +124,7 @@
                     <ul class="nav navbar-right panel_toolbox">
                       </li>
                       <li class="dropdown">
-                        <a href="../admin_group_posts/{!! $group->group_id !!}"><i class="fa fa-group"></i> Group Posts</a>
+                        <a href="../admin_groups"><i class="fa fa-group"></i> List Interests</a>
                       </li>
                     </ul>
                     <div class="clearfix"></div>
@@ -201,7 +201,7 @@
                 @endif
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Group <small>Events</small></h2>
+                    <h2>Activities <small>Events</small></h2>
                     
                     <div class="clearfix"></div>
                   </div>

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Session;
 use App\VipEvent;
-use App\EventGallery;
+use App\GlobalvipeventsInfoRequest;
+use App\Location;
+use App\GlobalVipEventGallery;
 use App\Group;
 use App\Admin;
 use Illuminate\Support\Facades\Auth;
@@ -31,28 +33,28 @@ class GlobalEventsController extends Controller
     }
 
 
-    public function newGlobalEvent(){
+    public function newGlobalVipEvent(){
 
         $user = Auth::user();
         $user = Admin::where('admin_id', $user->details_id)->first();
 
-        
-        return view('admin_vip_event_new')->with(['user'=> $user]);
+        $countries = Location::distinct()->get(['country']);
+        return view('admin_vip_event_new')->with(['user'=> $user, 'countries'=> $countries]);
     }
 
-    public function editEvent($id){
+    public function editGlobalVipEvent($id){
 
-        $gallery = DB::table('event_gallery')->where('event_id', $id)->get()->toArray();
+        $gallery = DB::table('vip_event_galleries')->where('vip_event_id', $id)->get()->toArray();
         $user = Auth::user();
         $user = Admin::where('admin_id', $user->details_id)->first();
         
-        $members_joined = DB::table('customer_event')->where('event_id', $id)->join('customers','customers.customer_id','=','customer_event.customer_id')->select('customers.*', 'customers.avatar as customer_avatar', 'customer_event.*')->get()->toArray();
+        $countries = Location::distinct()->get(['country']);
+        $members_joined = DB::table('globalvipevents_info_requests')->where('vip_event_id', $id)->join('customers','customers.customer_id','=','globalvipevents_info_requests.customer_id')->select('customers.*', 'customers.avatar as customer_avatar', 'globalvipevents_info_requests.*')->get()->toArray();
 
-        $groups = Group::all();
-        $event = DB::table('events')->where('event_id', $id)->join('groups','events.group_id','=','groups.group_id')->select('groups.name as group_name', 'events.*')->first();
+        $event = DB::table('vip_events')->where('id', $id)->first();
 		
         
-        return view('admin_event_edit')->with(['user'=> $user, 'members_joined'=> $members_joined, 'gallery'=> $gallery, 'event'=> $event, 'groups'=> $groups]);
+        return view('admin_vip_event_edit')->with(['user'=> $user, 'members_joined'=> $members_joined, 'gallery'=> $gallery, 'event'=> $event,'countries'=> $countries]);
     }
 
     /**
@@ -74,17 +76,17 @@ class GlobalEventsController extends Controller
     public function store(Request $request)
     {
         //
-        $event = new Event;
+        $event = new VipEvent;
 
-        $event->group_id = $request->input('group_id');
+        $event->title = $request->input('title');
 
-        $event->name = $request->input('name');
+        $event->city = $request->input('city');
 
-        $event->event_type = $request->input('event_type');
+        $event->state = $request->input('state');
 
-        $event->description = $request->input('description');
+        $event->country = $request->input('country');
 
-        $event->location = $request->input('location');
+        $event->details = $request->input('details');
 
         $event->capacity = $request->input('capacity');
 
@@ -132,11 +134,11 @@ class GlobalEventsController extends Controller
 
         move_uploaded_file($avatar, public_path($path));
 
-        $gallery = new EventGallery;
+        $gallery = new GlobalVipEventGallery;
 
-        $gallery->event_id = $request->input('event_id');
+        $gallery->vip_event_id = $request->input('event_id');
         
-        $gallery->avatar = $path;
+        $gallery->image = $path;
         
 
 
@@ -197,17 +199,17 @@ class GlobalEventsController extends Controller
     public function update(Request $request)
     {
         //
-        $event = Event::where('event_id', $request->input('event_id'))->first();
+        $event = VipEvent::where('id', $request->input('id'))->first();
 
-        $event->group_id = $request->input('group_id');
+        $event->title = $request->input('title');
 
-        $event->name = $request->input('name');
+        $event->city = $request->input('city');
 
-        $event->description = $request->input('description');
+        $event->state = $request->input('state');
 
-        $event->event_type = $request->input('event_type');
+        $event->country = $request->input('country');
 
-        $event->location = $request->input('location');
+        $event->details = $request->input('details');
 
         $event->capacity = $request->input('capacity');
 
@@ -277,31 +279,51 @@ class GlobalEventsController extends Controller
         }
     }
 
-     /**
-     * Function to fetch event customers
-     *
-     * @param  varchar  $event_id
-     * @return \Illuminate\Http\Response
-     */
-    public function getCustomers($event_id)
+    public function requests()
     {
         //
-        try
-        {
+        $user = Auth::user();
+        $user = Admin::where('admin_id', $user->details_id)->first();
 
-            $event = Event::findOrFail($event_id);
+        $events = DB::table('globalvipevents_info_requests')->leftJoin('customers','globalvipevents_info_requests.customer_id', '=',  'customers.customer_id')->join('vip_events','vip_events.id', '=',  'globalvipevents_info_requests.vip_event_id')->select('customers.*',  'globalvipevents_info_requests.*', 'vip_events.*', 'vip_events.id as event_id')->get()->toArray();
+		
+        $admins = Admin::all();
+        
+        return view('admin_global_vip_events_requests')->with(['user'=> $user,'admins'=> $admins, 'events'=> $events]);
 
-            $customers = $event->customers()->get()->toArray();
+    }
 
-            return response()->json(['error' => false, 'customers' => $customers], 200);
+    
 
-        }
-        catch (ModelNotFoundException $ex)
-        {
+    public function updateAdmin(Request $request)
+    {
+        $event = GlobalvipeventsInfoRequest::where('id', $request->input('id'))->first();
 
-            return response()->json(['error' => true, 'message' => 'Record not found'], 404);
+        $event->in_charge = $request->input('in_charge');
 
-        }
+        if($event->save()){
+            Session::flash('success', $event->in_charge. ' has been assigned ');
+            return back();
+        }else{
+            Session::flash('error', 'An error occured. Could not assign admin');
+            return back();
+        }  
+
+    }
+
+    public function updateStatus(Request $request)
+    {
+        $event = GlobalvipeventsInfoRequest::where('id', $request->input('id'))->first();
+
+        $event->status = $request->input('status');
+
+        if($event->save()){
+            Session::flash('success', 'Status has been set');
+            return back();
+        }else{
+            Session::flash('error', 'An error occured. Could not set status');
+            return back();
+        }  
 
     }
 }

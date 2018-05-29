@@ -20,7 +20,7 @@ class LocationsController extends Controller
 	
 	public function getState(Request $request){
     
-		$states = Location::select('state')->where('country','Nigeria')->orderBy('state', 'asc')->get()->toArray();
+		$states = Location::select('state')->where('country', $request->input('country'))->orderBy('state', 'asc')->get()->toArray();
 
 		
         return response()->json(['error' => false, 'states' => $states],200);
