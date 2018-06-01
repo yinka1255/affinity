@@ -27,6 +27,18 @@ Route::get('admin_groups', 'GroupsController@index')->middleware('auth');
 
 Route::get('admin_group_new', 'GroupsController@newGroup')->middleware('auth');
 
+Route::get('admin_feeds', 'FeedsController@index')->middleware('auth');
+
+Route::post('admin_feed_store', 'FeedsController@store')->middleware('auth');
+
+Route::post('admin_feed_update', 'FeedsController@update')->middleware('auth');
+
+Route::get('admin_volunteers', 'VolunteersController@index')->middleware('auth');
+
+Route::post('admin_volunteer_store', 'VolunteersController@store')->middleware('auth');
+
+Route::post('admin_volunteer_update', 'VolunteersController@update')->middleware('auth');
+
 Route::get('admin_group_edit/{id}', 'GroupsController@editGroup')->middleware('auth');
 
 Route::get('admin_group_posts/{id}', 'GroupsController@groupPosts')->middleware('auth');

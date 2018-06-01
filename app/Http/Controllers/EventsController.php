@@ -27,7 +27,6 @@ class EventsController extends Controller
         $events = DB::table('events')->join('groups','groups.group_id','=','events.group_id')->select('groups.name as group_name', 'events.*')->orderBy('created_at', 'desc')->get()->toArray(); //Event::all();
 
         return view('admin_events')->with(['user'=> $user, 'events'=> $events]);
-
     }
 
 

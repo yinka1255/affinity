@@ -47,6 +47,10 @@
                   </li>
                   <li><a href="admin_vpas"><i class="fa fa-bookmark"></i> VPAs (Phoenix) </a>
                   </li>
+                  <li><a href="admin_feeds"><i class="fa fa-file"></i> Feeds </a>
+                  </li>
+                  <li><a href="admin_volunteers"><i class="fa fa-credit-card"></i> Volunteers </a>
+                  </li>
                   <li><a><i class="fa fa-plane"></i> Travels <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="admin_airport_concierge">Airport Concierge Requests</a></li>
