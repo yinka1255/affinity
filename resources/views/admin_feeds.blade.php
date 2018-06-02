@@ -67,7 +67,6 @@
                         <tr>
                           <th>Avatar</th>
                           <th>Title</th>
-                          <th>Post</th>
                           <th>Created </th>
                           <th>Action </th>
                         </tr>
@@ -83,7 +82,6 @@
                             </div>
                           </td>
                           <td>{!! $feed->title !!}</td>
-                          <td>{!! $feed->post !!}</td>
                           <td>{!! $feed->created_at !!}</td>
                           <td><a class="btn btn-default btn-success source" href="javascript:void(0)" onclick='openEditModal(<?php echo json_encode($feed); ?>)'><i class="fa fa-pencil"></i></a>
                           <button class="btn btn-default btn-success source" onclick='openMyModal(<?php echo json_encode($feed); ?>)' ><i class="fa fa-eye"></i></button>

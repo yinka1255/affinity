@@ -11,6 +11,12 @@
     <title>Admin | The Affinity Club </title>
 
     @include("includes.admin-index-head")  
+
+    <style>
+      p{
+        font-weight: 400 !important;
+      }  
+    </style> 
   </head>
 
   <body class="nav-md">
@@ -54,14 +60,13 @@
                     <table id="datatable-buttons" class="table table-striped table-bordered">
                       <thead>
                         <tr>
-                          <th>Avatar</th>
-                          <th>Name</th>
-                          <th>Id</th>
-                          <th>Email</th>
-                          <th> Membership </th>
-                          <th> Expiry Date </th>
-                          <th> Created </th>
-                          <th> Action </th>
+                          <th width="10%">Avatar</th>
+                          <th width="20%">Name</th>
+                          <th width="10%">Id</th>
+                          <th width="20%"> Membership </th>
+                          <th width="15%"> Expiry Date </th>
+                          <th width="15%"> Created </th>
+                          <th width="10%"> Action </th>
                         </tr>
                       </thead>
 
@@ -76,7 +81,6 @@
                           </td>
                           <td>{!! $customer->firstname !!} {!! $customer->lastname !!}</td>
                           <td>{!! $customer->customer_id !!}</td>
-                          <td>{!! $customer->email !!}</td>
                           <td>{!! $customer->membership !!}</td>
                           <td>{!! $customer->end_date !!}</td>
                           <td>{!! $customer->created_at !!}</td>
@@ -110,7 +114,7 @@
       var myData;
       function openMyModal(data){
         document.getElementById('modal-button').click();
-        document.getElementById('title').innerHTML = data.firstname + '  ' +  data.lastname + ' <p style="color: #b33857;font-size: 12px;font-weight: 600;">From ' + data.start_date + ' To ' + data.end_date +'</p>';
+        document.getElementById('title').innerHTML = data.firstname + '  ' +  data.lastname +'<span style="color: #b33857;font-size: 12px;font-weight: 600;"> '+data.customer_id+'</span>  <p style="color: #b33857;font-size: 12px;font-weight: 600;">From ' + data.start_date + ' To ' + data.end_date +'</p>';
         document.getElementById('body-1').innerHTML = '<img src="public/' + data.avatar + '"  style="width:100% !important; height:auto;" >';
         document.getElementById('body-2').innerHTML = data.address; 
         document.getElementById('body-3').innerHTML = data.phone;

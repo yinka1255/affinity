@@ -10,7 +10,13 @@
 
     <title>Admin | The Affinity Club </title>
 
-    @include("includes.admin-index-head")  
+    @include("includes.admin-index-head")
+
+    <style>
+      p{
+        font-weight: 400 !important;
+      }  
+    </style>  
   </head>
 
   <body class="nav-md">
@@ -106,7 +112,7 @@
       var myData;
       function openMyModal(data){
         document.getElementById('modal-button').click();
-        document.getElementById('title').innerHTML = data.firstname + '  ' +  data.lastname + ' <p style="color: #b33857;font-size: 12px;font-weight: 600;">' + data.sex + '</p>';
+        document.getElementById('title').innerHTML = data.firstname + '  ' +  data.lastname + '<span style="color: #b33857;font-size: 12px;font-weight: 600;"> '+data.customer_id+'</span> <p style="color: #b33857;font-size: 12px;font-weight: 600;">' + data.sex + '</p>';
         document.getElementById('body-1').innerHTML = '<img src="public/' + data.avatar + '"  style="width:100% !important; height:auto;" >';
         document.getElementById('body-2').innerHTML = data.address; 
         document.getElementById('body-3').innerHTML = data.phone;
