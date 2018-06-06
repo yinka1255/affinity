@@ -56,7 +56,7 @@
 		<script src="../../affinity/js/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 		<!-- bootstrap-datetimepicker -->    
 		<script src="../../affinity/js/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 		
 		<script>
 			$(document).ready(function() {

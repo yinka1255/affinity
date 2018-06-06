@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Session;
+use File;
 use App\LuxuryExperience;
 use App\LuxuryExperienceGallery;
 use App\Location;
@@ -146,6 +147,21 @@ class LuxuryExperiencesController extends Controller
             return response()->json(['error' => true, 'message' => 'Record not found'],404);
         }
 
+    }
+
+
+    public function deleteImage($id)
+    {
+    
+        $lux = LuxuryExperienceGallery::where('id', $id)->first();
+
+        $lux->delete();
+
+        File::delete(public_path().'/images'.$lux->avatar);
+
+        Session::flash('success', 'Image has been successfully deleted');
+            return back();
+    
     }
 
     /**

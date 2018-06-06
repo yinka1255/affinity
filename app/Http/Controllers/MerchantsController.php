@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use File;
 use Session;
 use App\User;
 use App\Location;
@@ -302,6 +303,20 @@ class MerchantsController extends Controller
             return back();
         }    
 
+    }
+
+    public function deleteImage($id)
+    {
+    
+        $merchant = MerchantGallery::where('id', $id)->first();
+
+        $merchant->delete();
+
+        File::delete(public_path().'/images'.$merchant->avatar);
+
+        Session::flash('success', 'Image has been successfully deleted');
+            return back();
+    
     }
 
     /**

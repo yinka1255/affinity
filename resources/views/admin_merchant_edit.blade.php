@@ -20,9 +20,23 @@
         document.getElementById('uploadForm').submit();
       }
 
-      function deleteImage(){
-        document.getElementById('deleteForm').submit();
+      function deleteImage(id){
+        console.log(id);
+        $.confirm({
+          title: '<i class="far fa-trash-alt" style="color: red;"></i> Confirm!',
+          content: 'Are you sure you want to delete this image. This action cannot be reversed',
+          buttons: {
+              Confirm: function () {
+                  location.href="../admin_delete_merchant_image/" +id
+              },
+              cancel: function () {
+                  $.alert('Canceled!');
+              }
+          }
+        });
       }
+
+      
     </script>  
     <script>
       function getStates(){
@@ -231,7 +245,7 @@
                         <div class="form-group">
                           <label class="control-label col-md-3 col-sm-3 col-xs-3">Bio</label>
                           <div class="col-md-9 col-sm-9 col-xs-9">
-                          <textarea type="text" name="bio" class="resizable_textarea form-control" required placeholder="Bio here...">{!! $merchant->bio !!}</textarea>
+                            <textarea type="text" name="bio" class="resizable_textarea form-control" required placeholder="Bio here...">{!! $merchant->bio !!}</textarea>
                             <span class="fa fa-tag form-control-feedback right" aria-hidden="true"></span>
                           </div>
                         </div>
@@ -280,8 +294,8 @@
                         <input type="hidden" class="form-control" value="{!! $merchant->id !!}" name="merchant_id" required>
                       </form>
                       @foreach ($gallery as $dGallery) 
-                      <div class="col-md-4" style="margin-bottom: 10px;">
-                        <img src="../public/{!! $dGallery->avatar !!}" style="border: 2px solid #ccc;" height="120px"/>
+                      <div class="col-md-6" style="margin-bottom: 10px;">
+                        <img src="../public/{!! $dGallery->avatar !!}" style="border: 2px solid #ccc;" height="120px" onclick='deleteImage(<?php echo json_encode($dGallery->id); ?>)'/>
                       </div>
                       
                       @endforeach   

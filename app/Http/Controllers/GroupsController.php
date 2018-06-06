@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Session;
+use File;
 use App\Group;
 use App\Event;
 use App\GroupPost;
@@ -190,23 +191,6 @@ class GroupsController extends Controller
     }    
 
 
-    public function deleteFile(Request $request)
-    {
-        File::delete($request->input('avatar'));
-
-        $gallery = GroupGallery::where('group_id', $id)->first();
-
-        $gallery->group_id = $request->input('group_id');
-
-
-        if($gallery->delete()){
-            Session::flash('success', 'Image has been deleted');
-            return back();
-        }else{
-            Session::flash('error', 'An error occured. Could not delete image');
-            return back();
-        }  
-    }    
 
     public function update(Request $request)
     {
@@ -244,6 +228,20 @@ class GroupsController extends Controller
             return back();
         }  
 
+    }
+
+    public function deleteImage($id)
+    {
+    
+        $group = GroupGallery::where('id', $id)->first();
+
+        $group->delete();
+
+        File::delete(public_path().'/images'.$group->avatar);
+
+        Session::flash('success', 'Image has been successfully deleted');
+            return back();
+    
     }
 
     /**

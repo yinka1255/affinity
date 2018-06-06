@@ -37,6 +37,22 @@
       function deleteImage(){
         document.getElementById('deleteForm').submit();
       }
+
+      function deleteImage(id){
+        console.log(id);
+        $.confirm({
+          title: '<i class="far fa-trash-alt" style="color: red;"></i> Confirm!',
+          content: 'Are you sure you want to delete this image. This action cannot be reversed',
+          buttons: {
+              Confirm: function () {
+                  location.href="../admin_delete_rental_image/" +id
+              },
+              cancel: function () {
+                  $.alert('Canceled!');
+              }
+          }
+        });
+      }
     </script>  
   </head>
 
@@ -218,7 +234,7 @@
                       @foreach ($gallery as $dGallery) 
                       <div class="col-md-4" style="margin-bottom: 10px;">
                         <!--<a href="../../affinity/public/delete_luxury_rental_gallery/{!! $dGallery->id !!}/{!! $dGallery->avatar !!}"><i class="fa fa-trash-alt" style="color: #666;"></i></a>-->
-                        <img src="../public/{!! $dGallery->avatar !!}" style="border: 2px solid #ccc;" height="120px"/>
+                        <img src="../public/{!! $dGallery->avatar !!}" style="border: 2px solid #ccc;" height="120px" onclick='deleteImage(<?php echo json_encode($dGallery->id); ?>)'/>
                       </div>
                       
                       @endforeach   

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Session;
+use File;
 use App\Experience;
 use App\ExperienceGallery;
 use App\Location;
@@ -143,6 +144,20 @@ class ExperiencesController extends Controller
             return response()->json(['error' => true, 'message' => 'Record not found'],404);
         }
 
+    }
+
+    public function deleteImage($id)
+    {
+    
+        $experience = ExperienceGallery::where('id', $id)->first();
+
+        $experience->delete();
+
+        File::delete(public_path().'/images'.$experience->avatar);
+
+        Session::flash('success', 'Image has been successfully deleted');
+            return back();
+    
     }
 
     /**

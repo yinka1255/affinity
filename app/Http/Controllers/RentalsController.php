@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use File;
 use Session;
 use App\Rental;
 use App\RentalRequest;
@@ -124,6 +125,20 @@ class RentalsController extends Controller
             Session::flash('error', 'An error occured. Could not create experience');
             return back();
         }  
+    }
+
+    public function deleteImage($id)
+    {
+    
+        $rental = RentalGallery::where('id', $id)->first();
+
+        $rental->delete();
+
+        File::delete(public_path().'/images'.$rental->avatar);
+
+        Session::flash('success', 'Image has been successfully deleted');
+            return back();
+    
     }
     
 

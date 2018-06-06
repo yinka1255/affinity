@@ -1,7 +1,7 @@
 <!-- menu profile quick info -->
 <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="../public/<?php echo $user->avatar; ?>" width="60px" height="60px" alt="..." class="img-circle profile_img">
+                <img src="images/<?php echo $user->avatar; ?>" width="60px" height="60px" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -37,22 +37,36 @@
                   </li>
                   <li><a href="../admin_luxury_experiences"><i class="fa fa-fire"></i> Luxury Travels </a>
                   </li>
-                  <li><a href="../admin_rentals"><i class="fa fa-car"></i> Luxury Rentals & Charters </a>
-                  </li>
-                  <li><a href="../admin_rentals_requests"><i class="fa fa-car"></i> Luxury R & C Requests </a>
+                  <li><a><i class="fa fa-shopping-cart"></i> Luxury Rentals <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="../admin_rentals"><i class="fa fa-car"></i> Luxury Rentals & Charters </a></li>
+                      <li><a href="../admin_rentals_requests"><i class="fa fa-car"></i> Luxury R & C Requests </a></li>
+                    </ul>
                   </li>
                   <li><a href="../admin_vpas"><i class="fa fa-bookmark"></i> VPAs (Phoenix) </a>
                   </li>
+                  <li><a href="../admin_contacts"><i class="fa fa-question-circle"></i> Tickets(Contact us) </a>
+                  </li>
                   <li><a href="../admin_feeds"><i class="fa fa-file"></i> Feeds </a>
                   </li>
-                  <li><a href="../admin_volunteers"><i class="fa fa-credit-card"></i> Volunteers </a>
-                  </li>
-                  <li><a><i class="fa fa-plane"></i> Travels <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-credit-card"></i> Get involved <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="../admin_donations"><i class="fa fa-credit-card"></i> Donations </a></li>
+                      <li><a href="../admin_volunteers"><i class="fa fa-credit-card"></i> Volunteers </a></li>
+                    </ul>
+                  </li> 
+                  <li><a><i class="fa fa-plane"></i> Travels Requests<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="../admin_airport_concierge">Airport Concierge Requests</a></li>
                       <li><a href="../admin_bespoke_travel">Bespoke Travel</a></li>
                       <li><a href="../admin_luxury_experiences_requests">Luxury Travel Requests</a></li>
                       <li><a href="../admin_flight_booking_requests">Flight Bookings</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-calendar"></i> VIP Events<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="../admin_global_vip_events">Global VIP Events</a></li>
+                      <li><a href="../admin_private_parties">Private Parties</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-universal-access"></i> VIP Access Requests<span class="fa fa-chevron-down"></span></a>
@@ -71,12 +85,6 @@
                     <ul class="nav child_menu">
                       <li><a href="../admin_personal_shoppings">Personal Shopper</a></li>
                       <li><a href="../admin_wardrobe_stylings">Wardrobe Styling</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-calendar"></i> VIP Events<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="../admin_global_vip_events">Global VIP Events</a></li>
-                      <li><a href="../admin_private_parties">Private Parties</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-product-hunt"></i> Bespoke Product <span class="fa fa-chevron-down"></span></a>
@@ -133,7 +141,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="../public/<?php echo $user->avatar; ?>" width="60px" height="60px" alt=""><?php echo $user->name; ?>
+                    <img src="images/<?php echo $user->avatar; ?>" width="60px" height="60px" alt=""><?php echo $user->name; ?>
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">

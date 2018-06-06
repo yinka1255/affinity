@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use Session;
-use App\Feed;
 use App\Admin;
+use App\Volunteer;
+use App\Location;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class FeedsController extends Controller
+class VolunteersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,22 +25,32 @@ class FeedsController extends Controller
         $user = Auth::user();
         $user = Admin::where('admin_id', $user->details_id)->first();
 
-        $feeds = Feed::all();
-        
-        return view('admin_feeds')->with(['user'=> $user, 'feeds'=> $feeds]);
+        $volunteers = Volunteer::all();
+        $countries = Location::distinct()->get(['country']);
+
+        return view('admin_volunteers')->with(['user'=> $user, 'volunteers'=> $volunteers, 'countries'=>$countries]);
 
     }
 
    
     public function store(Request $request)
     {
-        $feed = new Feed;
+        $volunteer= new Volunteer;
 
-        $feed->title = $request->input('title');
+        $volunteer->title = $request->input('title');
 
-        $feed->post = $request->input('post');
+        $volunteer->post = $request->input('post');
 
-        $feed->feed_type = $request->input('feed_type'); 
+        $volunteer->state = $request->input('state'); 
+
+        $volunteer->country = $request->input('country'); 
+
+        $volunteer->ntk = $request->input('ntk'); 
+
+        $volunteer->start_date = substr( $request->input('date'), 0, strrpos($request->input('date'), '-' ) );
+
+        $volunteer->end_date = substr($request->input('date'), strpos($request->input('date'), "-") + 1);
+
 
         $avatar = $request->file('avatar'); 
         
@@ -51,15 +62,15 @@ class FeedsController extends Controller
 
         move_uploaded_file($avatar, public_path($path));
         
-        $feed->avatar = $path;
+        $volunteer->avatar = $path;
         
 
 
-        if($feed->save()){
-            Session::flash('success', 'Group '. $feed->title . ' has been created');
+        if($volunteer->save()){
+            Session::flash('success', $volunteer->type . ' has been created');
             return back();
         }else{
-            Session::flash('error', 'An error occured. Could not create group');
+            Session::flash('error', 'An error occured. Process execution failed');
             return back();
         }  
 
@@ -89,13 +100,22 @@ class FeedsController extends Controller
 
     public function update(Request $request)
     {
-        $feed = Feed::where('id', $request->input('feed_id'))->first();
+        $volunteer = Volunteer::where('id', $request->input('volunteer_id'))->first();
 
-        $feed->title = $request->input('title');
+        $volunteer->title = $request->input('title');
 
-        $feed->post = $request->input('post');
+        $volunteer->post = $request->input('post');
 
-        $feed->feed_type = $request->input('feed_type'); 
+        $volunteer->state = $request->input('state'); 
+
+        $volunteer->country = $request->input('country'); 
+
+        $volunteer->ntk = $request->input('ntk'); 
+
+        $volunteer->start_date = substr( $request->input('date'), 0, strrpos($request->input('date'), '-' ) );
+
+        $volunteer->end_date = substr($request->input('date'), strpos($request->input('date'), "-") + 1);
+
 
         if($request->hasFile('avatar')){
             $avatar = $request->file('avatar'); 
@@ -108,15 +128,15 @@ class FeedsController extends Controller
 
             move_uploaded_file($avatar, public_path($path));
             
-            $feed->avatar = $path;
+            $volunteer->avatar = $path;
         }
 
 
-        if($feed->save()){
-            Session::flash('success',$feed->title . ' has been updated');
+        if($volunteer->save()){
+            Session::flash('success',$volunteer->title . ' has been updated');
             return back();
         }else{
-            Session::flash('error', 'An error occured. Could not updated feed');
+            Session::flash('error', 'An error occured. Could not updated');
             return back();
         }  
 

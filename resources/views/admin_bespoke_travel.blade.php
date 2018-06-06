@@ -48,6 +48,123 @@
                 @if(Session::has('success'))
                     <div class="alert alert-success"> {{Session::get('success')}} </div>
                 @endif
+                <div class="row">
+                  <div class="col-md-10">
+                    <div class="x_panel tile" style="height: 180px;">
+                      
+                      <div class="x_content">
+                      <h4><b>Requests Status</b></h4>
+                        <div class="widget_summary">
+                          <div class="w_left w_25">
+                            <span>Pending</span>
+                          </div>
+                          <div class="w_center w_55">
+                            <div class="progress">
+                              <div class="progress-bar bg-green" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 
+                              <?php
+                                $pending = 0;
+                                foreach ($bespoke_travel as $my_bespoke_travel) {
+                                  if($my_bespoke_travel->status == 'Pending'){
+                                    $pending++;
+                                  }
+                                }  
+                                echo ($pending/count($bespoke_travel)) * 100 ;?>%">
+                                <span class="sr-only">
+                                  0
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="w_right w_20">
+                            <span>
+                              <?php
+                                $pending = 0;
+                                foreach ($bespoke_travel as $my_bespoke_travel) {
+                                  if($my_bespoke_travel->status == "Pending"){
+                                    $pending++;
+                                  }
+                                }  
+                              ?>
+                              {{ $pending }}  
+                            </span>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+
+                        <div class="widget_summary">
+                          <div class="w_left w_25">
+                            <span>In Progress</span>
+                          </div>
+                          <div class="w_center w_55">
+                            <div class="progress">
+                              <div class="progress-bar bg-green" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 
+                              <?php
+                                $in_progress = 0;
+                                foreach ($bespoke_travel as $my_bespoke_travel) {
+                                  if($my_bespoke_travel->status == "In Progress"){
+                                    $in_progress++;
+                                  }
+                                }  
+                                echo ($in_progress/count($bespoke_travel)) * 100 ;?>%">
+                                <span class="sr-only">50% Complete</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="w_right w_20">
+                            <span>
+                            <?php
+                                $in_progress = 0;
+                                foreach ($bespoke_travel as $my_bespoke_travel) {
+                                  if($my_bespoke_travel->status == "In Progress"){
+                                    $in_progress++;
+                                  }
+                                }  
+                              ?>
+                              {{ $in_progress }} 
+                            </span>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+                        <div class="widget_summary">
+                          <div class="w_left w_25">
+                            <span>Completed</span>
+                          </div>
+                          <div class="w_center w_55">
+                            <div class="progress">
+                              <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 
+                              <?php
+                                $completed = 0;
+                                foreach ($bespoke_travel as $my_bespoke_travel) {
+                                  if($my_bespoke_travel->status == "Completed"){
+                                    $completed++;
+                                  }
+                                }  
+                                echo ($completed/count($bespoke_travel)) * 100 ;?>%">
+                                <span class="sr-only">60% Complete</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="w_right w_20">
+                            <span>
+                            <?php
+                                $completed = 0;
+                                foreach ($bespoke_travel as $my_bespoke_travel) {
+                                  if($my_bespoke_travel->status == "Completed"){
+                                    $completed++;
+                                  }
+                                }  
+                              ?>
+                              {{ $completed }} 
+                            </span>
+                            </span>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>  
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>BespokeTravel <small>Requests</small></h2>
@@ -95,7 +212,7 @@
                                 <option style="color: yellow !important;">{!! $bespoke_travel->status !!}</option>
                                 <option>Pending</option> 
                                 <option>In Progress</option> 
-                                <option>Closed</option> 
+                                <option>Completed</option> 
                               </select>  
                               <input type="hidden" name="id" value="{{$bespoke_travel->id}}" />
                             </form>

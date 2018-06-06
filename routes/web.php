@@ -39,6 +39,12 @@ Route::post('admin_volunteer_store', 'VolunteersController@store')->middleware('
 
 Route::post('admin_volunteer_update', 'VolunteersController@update')->middleware('auth');
 
+Route::get('admin_donations', 'DonationsController@index')->middleware('auth');
+
+Route::post('admin_donation_store', 'DonationsController@store')->middleware('auth');
+
+Route::post('admin_donation_update', 'DonationsController@update')->middleware('auth');
+
 Route::get('admin_group_edit/{id}', 'GroupsController@editGroup')->middleware('auth');
 
 Route::get('admin_group_posts/{id}', 'GroupsController@groupPosts')->middleware('auth');
@@ -180,6 +186,13 @@ Route::post('admin_vpa_update_admin', 'VpasController@updateAdmin')->middleware(
 
 Route::post('admin_vpa_update_status', 'VpasController@updateStatus')->middleware('auth');
 
+Route::get('admin_contacts', 'ContactsController@index')->middleware('auth');
+
+Route::post('admin_contact_update_admin', 'ContactsController@updateAdmin')->middleware('auth');
+
+Route::post('admin_contact_update_status', 'ContactsController@updateStatus')->middleware('auth');
+
+
 Route::get('admin_airport_concierge', 'AirportConciergeController@index')->middleware('auth');
 
 Route::post('admin_airport_concierge_update_admin', 'AirportConciergeController@updateAdmin')->middleware('auth');
@@ -296,6 +309,20 @@ Route::get('admin_merchant_edit/{id}', 'MerchantsController@edit')->middleware('
 Route::post('admin_merchant_update', 'MerchantsController@update')->middleware('auth');
 
 Route::post('admin_upload_merchant_gallery', 'MerchantsController@upload')->middleware('auth');
+
+Route::get('admin_delete_merchant_image/{id}', 'MerchantsController@deleteImage')->middleware('auth');
+
+Route::get('admin_delete_group_image/{id}', 'GroupsController@deleteImage')->middleware('auth');
+
+Route::get('admin_delete_event_image/{id}', 'EventsController@deleteImage')->middleware('auth');
+
+Route::get('admin_delete_experience_image/{id}', 'ExperiencesController@deleteImage')->middleware('auth');
+
+Route::get('admin_delete_luxury_image/{id}', 'LuxuryExperiencesController@deleteImage')->middleware('auth');
+
+Route::get('admin_delete_rental_image/{id}', 'RentalsController@deleteImage')->middleware('auth');
+
+
 
 Route::get('admin_activate_account/{id}', 'AdminsController@activateAccount')->middleware('auth');
 

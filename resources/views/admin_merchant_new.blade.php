@@ -191,10 +191,10 @@
                       </div>  
                       <div class="col-md-6">     
                         <div class="form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-3">Details</label>
+                          <label class="control-label col-md-3 col-sm-3 col-xs-3">Username</label>
                           <div class="col-md-9 col-sm-9 col-xs-9">
-                            <input type="text" name="details" class="form-control" required>
-                            <span class="fa fa-address-book form-control-feedback right" aria-hidden="true"></span>
+                            <input type="text" name="username" class="form-control" required>
+                            <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
                           </div>
                         </div> 
                       </div>  
@@ -212,10 +212,10 @@
                       </div>  
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-3">Username</label>
+                          <label class="control-label col-md-3 col-sm-3 col-xs-3">Details</label>
                           <div class="col-md-9 col-sm-9 col-xs-9">
-                            <input type="text" name="username" class="form-control" required>
-                            <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                            <textarea type="text" name="details" class="resizable_textarea form-control" required placeholder="Details here..."></textarea>
+                            <span class="fa fa-address-book form-control-feedback right" aria-hidden="true"></span>
                           </div>
                         </div> 
                       </div>  
@@ -223,7 +223,7 @@
                         <div class="form-group">
                           <label class="control-label col-md-3 col-sm-3 col-xs-3">Bio</label>
                           <div class="col-md-9 col-sm-9 col-xs-9">
-                          <textarea type="text" name="bio" class="resizable_textarea form-control" required placeholder="Bio here..."></textarea>
+                            <textarea type="text" name="bio" class="resizable_textarea form-control" required placeholder="Bio here..."></textarea>
                             <span class="fa fa-tag form-control-feedback right" aria-hidden="true"></span>
                           </div>
                         </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Session;
+use File;
 use App\Event;
 use App\EventGallery;
 use App\Group;
@@ -148,6 +149,20 @@ class EventsController extends Controller
             return back();
         }  
     }    
+
+    public function deleteImage($id)
+    {
+    
+        $event = EventGallery::where('id', $id)->first();
+
+        $event->delete();
+
+        File::delete(public_path().'/images'.$event->avatar);
+
+        Session::flash('success', 'Image has been successfully deleted');
+            return back();
+    
+    }
 
     /**
      * Display the specified resource.

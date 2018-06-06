@@ -48,6 +48,124 @@
                 @if(Session::has('success'))
                     <div class="alert alert-success"> {{Session::get('success')}} </div>
                 @endif
+
+                <div class="row">
+                  <div class="col-md-10">
+                    <div class="x_panel tile" style="height: 180px;">
+                      
+                      <div class="x_content">
+                      <h4><b>Requests Status</b></h4>
+                        <div class="widget_summary">
+                          <div class="w_left w_25">
+                            <span>Pending</span>
+                          </div>
+                          <div class="w_center w_55">
+                            <div class="progress">
+                              <div class="progress-bar bg-green" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 
+                              <?php
+                                $pending = 0;
+                                foreach ($bespoke_product_requests as $my_bespoke_product_requests) {
+                                  if($my_bespoke_product_requests->status == 'Pending'){
+                                    $pending++;
+                                  }
+                                }  
+                                echo ($pending/count($bespoke_product_requests)) * 100 ;?>%">
+                                <span class="sr-only">
+                                  0
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="w_right w_20">
+                            <span>
+                              <?php
+                                $pending = 0;
+                                foreach ($bespoke_product_requests as $my_bespoke_product_requests) {
+                                  if($my_bespoke_product_requests->status == "Pending"){
+                                    $pending++;
+                                  }
+                                }  
+                              ?>
+                              {{ $pending }}  
+                            </span>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+
+                        <div class="widget_summary">
+                          <div class="w_left w_25">
+                            <span>In Progress</span>
+                          </div>
+                          <div class="w_center w_55">
+                            <div class="progress">
+                              <div class="progress-bar bg-green" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 
+                              <?php
+                                $in_progress = 0;
+                                foreach ($bespoke_product_requests as $my_bespoke_product_requests) {
+                                  if($my_bespoke_product_requests->status == "In Progress"){
+                                    $in_progress++;
+                                  }
+                                }  
+                                echo ($in_progress/count($bespoke_product_requests)) * 100 ;?>%">
+                                <span class="sr-only">50% Complete</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="w_right w_20">
+                            <span>
+                            <?php
+                                $in_progress = 0;
+                                foreach ($bespoke_product_requests as $my_bespoke_product_requests) {
+                                  if($my_bespoke_product_requests->status == "In Progress"){
+                                    $in_progress++;
+                                  }
+                                }  
+                              ?>
+                              {{ $in_progress }} 
+                            </span>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+                        <div class="widget_summary">
+                          <div class="w_left w_25">
+                            <span>Completed</span>
+                          </div>
+                          <div class="w_center w_55">
+                            <div class="progress">
+                              <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 
+                              <?php
+                                $completed = 0;
+                                foreach ($bespoke_product_requests as $my_bespoke_product_requests) {
+                                  if($my_bespoke_product_requests->status == "Completed"){
+                                    $completed++;
+                                  }
+                                }  
+                                echo ($completed/count($bespoke_product_requests)) * 100 ;?>%">
+                                <span class="sr-only">60% Complete</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="w_right w_20">
+                            <span>
+                            <?php
+                                $completed = 0;
+                                foreach ($bespoke_product_requests as $my_bespoke_product_requests) {
+                                  if($my_bespoke_product_requests->status == "Completed"){
+                                    $completed++;
+                                  }
+                                }  
+                              ?>
+                              {{ $completed }} 
+                            </span>
+                            </span>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>  
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Bespoke product <small>Requests</small></h2>

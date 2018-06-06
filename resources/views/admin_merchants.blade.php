@@ -11,6 +11,11 @@
     <title>Admin | The Affinity Club </title>
 
     @include("includes.admin-index-head")  
+    <style>
+      p{
+        font-weight: 400;
+      }
+    </style>  
   </head>
 
   <body class="nav-md">
@@ -113,7 +118,7 @@
       var myData;
       function openMyModal(data){
         document.getElementById('modal-button').click();
-        document.getElementById('title').innerHTML = data.name + ' <p style="color: #b33857;font-size: 12px;font-weight: 600;">From ' + data.start_date + ' To ' + data.end_date +'</p>';
+        document.getElementById('title').innerHTML = data.name + ' <p style="color: #b33857;font-size: 12px;font-weight: 600;">' + data.created_at +'</p>';
         document.getElementById('body-1').innerHTML = '<img src="public/' + data.avatar + '"  style="width:100% !important; height:auto;" >';
         document.getElementById('body-2').innerHTML = data.country + ', ' + data.state + ' '  + data.city + ', ' + data.address; 
         document.getElementById('body-3').innerHTML = data.contact;
@@ -123,7 +128,7 @@
         document.getElementById('body-7').innerHTML = data.website; 
       }
     </script>
-    <button type="hidden" id="modal-button" " data-toggle="modal" data-target="#myModal">Open Modal</button>
+    <button type="hidden" id="modal-button" data-toggle="modal" data-target="#myModal">Open Modal</button>
   
   </body>
   <div id="myModal" class="modal fade" role="dialog">

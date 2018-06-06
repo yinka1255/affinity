@@ -57,7 +57,7 @@
 		<!-- bootstrap-datetimepicker -->    
 		<script src="js/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
 		
-		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 		<script>
 			$(document).ready(function() {
 				$('.alert').delay(5000).fadeOut(600);
