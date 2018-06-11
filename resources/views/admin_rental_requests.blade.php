@@ -52,7 +52,7 @@
 
 
                   <div class="col-md-10">
-                    <div class="x_panel tile" style="height: 180px;">
+                    <div class="x_panel tile" style="height: 202px;">
                       
                       <div class="x_content">
                       <h4><b>Requests Status</b></h4>
@@ -62,7 +62,7 @@
                           </div>
                           <div class="w_center w_55">
                             <div class="progress">
-                              <div class="progress-bar bg-green" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 
+                              <div class="progress-bar bg-blue" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 
                               <?php
                                 $pending = 0;
                                 foreach ($requests as $request) {
@@ -101,7 +101,7 @@
                           </div>
                           <div class="w_center w_55">
                             <div class="progress">
-                              <div class="progress-bar bg-green" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 
+                              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 
                               <?php
                                 $in_progress = 0;
                                 foreach ($requests as $request) {
@@ -133,20 +133,20 @@
                         </div>
                         <div class="widget_summary">
                           <div class="w_left w_25">
-                            <span>Completed</span>
+                            <span>Resolved</span>
                           </div>
                           <div class="w_center w_55">
                             <div class="progress">
                               <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 
                               <?php
-                                $completed = 0;
+                                $resolved = 0;
                                 foreach ($requests as $request) {
-                                  if($request->status == "Completed"){
-                                    $completed++;
+                                  if($request->status == "Resolved"){
+                                    $resolved++;
                                   }
                                 } 
                                 if(count($requests > 0)){ 
-                                  echo ($completed/count($requests)) * 100 ;
+                                  echo ($resolved/count($requests)) * 100 ;
                                 }  ?>%">
                                 <span class="sr-only">60% Complete</span>
                               </div>
@@ -155,19 +155,58 @@
                           <div class="w_right w_20">
                             <span>
                             <?php
-                                $completed = 0;
+                                $resolved = 0;
                                 foreach ($requests as $request) {
-                                  if($request->status == "Completed"){
-                                    $completed++;
+                                  if($request->status == "Resolved"){
+                                    $resolved++;
                                   }
                                 }  
                               ?>
-                              {{ $completed }} 
+                              {{ $resolved }} 
                             </span>
                             </span>
                           </div>
                           <div class="clearfix"></div>
                         </div>
+
+                        <div class="widget_summary">
+                          <div class="w_left w_25">
+                            <span>Unresolved</span>
+                          </div>
+                          <div class="w_center w_55">
+                            <div class="progress">
+                              <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 
+                              <?php
+                                $unresolved = 0;
+                                foreach ($requests as $request) {
+                                  if($request->status == "Unresolved"){
+                                    $unresolved++;
+                                  }
+                                } 
+                                if(count($requests > 0)){ 
+                                  echo ($unresolved/count($requests)) * 100 ;
+                                }  ?>%">
+                                <span class="sr-only">60% Complete</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="w_right w_20">
+                            <span>
+                            <?php
+                                $unresolved = 0;
+                                foreach ($requests as $request) {
+                                  if($request->status == "Unresolved"){
+                                    $unresolved++;
+                                  }
+                                }  
+                              ?>
+                              {{ $unresolved }} 
+                            </span>
+                            </span>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+                        
                         
                       </div>
                     </div>
@@ -182,6 +221,7 @@
                     <table id="datatable-buttons" class="table table-striped table-bordered">
                       <thead>
                         <tr>
+                          <th>Id</th>
                           <th>Luxury Item</th>
                           <th>Created</th>
                           <th>Member</th>
@@ -195,9 +235,10 @@
                       <tbody>
                       @foreach ($requests as $key => $request) 
                         <tr>
+                          <td>{!! $request->id !!}</td>
                           <td>{!! $request->name !!}</td>
                           <td>{!! $request->created_at !!}</td>
-                          <td>{!! $request->firstname !!} {!! $request->lastname !!} </td>
+                          <td>{!! $request->customer_id !!} </td>
                           <td>
                             <form class="form-horizontal form-label-left" id="updateAdmin<?php echo $key; ?>" method="post" enctype="multipart/form-data" action="admin_rental_update_admin">
                               <select class="select2_single form-control" onchange="updateAdmin({{$key}})"  name="in_charge" tabindex="-1">
@@ -215,7 +256,8 @@
                                 <option style="background: yellow !important;"disabled selected>{!! $request->status !!}</option>
                                 <option value="Pending">Pending</option> 
                                 <option value="In Progress">In Progress</option> 
-                                <option value="Closed">Closed</option> 
+                                <option value="Resolved">Resolved</option> 
+                                <option value="Unresolved">Unresolved</option> 
                               </select>  
                               <input type="hidden" name="id" value="{{$request->id}}" />
                             </form>

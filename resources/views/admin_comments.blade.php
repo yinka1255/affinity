@@ -11,6 +11,17 @@
     <title>Admin | The Affinity Club </title>
 
     @include("includes.admin-index-head")  
+
+    <script>
+      function updateAdmin(key){
+        document.getElementById('updateAdmin'+key).submit();
+      }
+
+      function updateStatus(key){
+        document.getElementById('updateStatus'+key).submit();
+      }
+
+    </script>
   </head>
 
   <body class="nav-md">
@@ -24,13 +35,13 @@
 
             <div class="clearfix"></div>
 
-            @include("includes.admin-absolute-menu")
+            @include("includes.admin-absolute-menu1")
 
         <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
             <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="col-md-12 col-sm-12 col-xs-12">
                 @if(Session::has('error'))
                     <div class="alert alert-danger"> {{Session::get('error')}} </div>
                 @endif
@@ -38,45 +49,30 @@
                 @if(Session::has('success'))
                     <div class="alert alert-success"> {{Session::get('success')}} </div>
                 @endif
+                <div class="row">
+                  
                 <div class="x_panel">
                   <div class="x_title">
-                      @foreach ($group_posts as $key=>$group) 
-                      @if($key == 0)
-                      <h2>{{$group->group_name}} <small>Posts</small></h2>
-                      @endif
-                      @endforeach
-                    <ul class="nav navbar-right panel_toolbox">
-                      </li>
-                      
-                    </ul>
-                    <div class="clearfix"></div>
+                    <h2>Comments <small>Lists</small></h2>
                   </div>
                   <div class="x_content">
-                    
                     <table id="datatable-buttons" class="table table-striped table-bordered">
                       <thead>
                         <tr>
-                          <th>Avatar</th>
-                          <th>Title</th>
                           <th>Post</th>
-                          <th>Created </th>
-                          <th>Action </th>
+                          <th>Created</th>
+                          <th>Name </th>
                         </tr>
                       </thead>
 
 
                       <tbody>
-                      @foreach ($group_posts as $group) 
+                      @foreach ($comments as $key => $comment) 
                         <tr>
-                          <td>
-                            <div class="profile_pic">
-                              <img src="../public/{{ $group->avatar or 'images/profile.png'}}" style="width:60px !important; height:60px;" alt="..." class="img-circle profile_img">
-                            </div>
-                          </td>
-                          <td>{!! $group->title !!}</td>
-                          <td>{!! $group->post !!}</td>
-                          <td>{!! $group->created_at !!}</td>
-                          <td><a class="btn btn-default btn-success source" href="../admin_group_post_delete/{!! $group->id !!}"><i class="fa fa-pencil"></i>Delete</a></td>
+                          <td>{!! $comment->post !!}</td>
+                          <td>{!! $comment->created_at !!}</td>
+                          <td>{!! $comment->poster !!} </td>
+                           
                         </tr>
                       @endforeach  
                       </tbody>
@@ -85,39 +81,25 @@
                 </div>
               </div>
             </div>
-
-            <div class="row">
+          </div>
+          <div class="row">
               <div class="col-md-7">
               <div class="x_panel">
                   <div class="x_title">
-                    <h2>Post <small>New</small></h2>
+                    <h2>Comment <small>New</small></h2>
                     
                   </div>
                   <div class="x_content">
-                    <form class="form-horizontal form-label-left" method="post" enctype="multipart/form-data" action="../admin_group_post_store">
-
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-3">Title</label>
-                        <div class="col-md-9 col-sm-9 col-xs-9">
-                          <input type="text" name="title" class="form-control" required>
-                          <span class="fa fa-tag form-control-feedback right" aria-hidden="true"></span>
-                        </div>
-                      </div>                      
-                      
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-3">Avatar</label>
-                        <div class="col-md-9 col-sm-9 col-xs-9">
-                          <input type="file" class="form-control"  name="avatar" required>
-                          <span class="fa fa-file-image-o form-control-feedback right" aria-hidden="true"></span>
-                        </div>
-                      </div>
+                    <form class="form-horizontal form-label-left" method="post" enctype="multipart/form-data" action="../admin_post_comment">
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-3">Details</label>
                         <div class="col-md-9 col-sm-9 col-xs-9">
                           <textarea type="text" name="post" class="resizable_textarea form-control" required placeholder="Details here..."></textarea>
                         </div>
                       </div>
-                      <input type="hidden" name="group_id" class="form-control" value="{!! $id !!}" required>
+                      <input type="hidden" name="id" class="form-control" value="{!! $id !!}" required>
+                      <input type="hidden" name="table" class="form-control" value="{!! $table !!}" required>
+                      <input type="hidden" name="name" class="form-control" value="{!! $user->name !!}" required>
                       <div class="ln_solid"></div>
 
                       <div class="form-group">
@@ -132,8 +114,6 @@
                 </div>
               </div>
             </div>    
-          </div>
-        </div>
         <!-- /page content -->
 
         <!-- footer content -->
@@ -146,7 +126,6 @@
         <!-- /footer content -->
       </div>
     </div>
-    @include("includes.admin-absolute-index-footer-script")
-    
+    @include("includes.admin-absolute-index-footer-script1")
   </body>
 </html>

@@ -35,7 +35,7 @@
 
             <div class="row">
                   <div class="col-md-4">
-                    <div class="x_panel tile" style="height: 180px;">
+                    <div class="x_panel tile" style="height: 202px;">
                       
                       <div class="x_content">
                       <h4><b>Airport Concierge  Request Status</b></h4>
@@ -112,19 +112,19 @@
                         </div>
                         <div class="widget_summary">
                           <div class="w_left w_25">
-                            <span>Completed</span>
+                            <span>Resolved</span>
                           </div>
                           <div class="w_center w_55">
                             <div class="progress">
                               <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 
                               <?php
-                                $completed = 0;
+                                $resolved = 0;
                                 foreach ($airport_concierge as $my_airport_concierge) {
-                                  if($my_airport_concierge->status == "Completed"){
-                                    $completed++;
+                                  if($my_airport_concierge->status == "Resolved"){
+                                    $resolved++;
                                   }
                                 }  
-                                echo ($completed/count($airport_concierge)) * 100 ;?>%">
+                                echo ($resolved/count($airport_concierge)) * 100 ;?>%">
                                 <span class="sr-only">60% Complete</span>
                               </div>
                             </div>
@@ -132,14 +132,49 @@
                           <div class="w_right w_20">
                             <span>
                             <?php
-                                $completed = 0;
+                                $resolved = 0;
                                 foreach ($airport_concierge as $my_airport_concierge) {
-                                  if($my_airport_concierge->status == "Completed"){
-                                    $completed++;
+                                  if($my_airport_concierge->status == "Resolved"){
+                                    $resolved++;
                                   }
                                 }  
                               ?>
-                              {{ $completed }} 
+                              {{ $resolved }} 
+                            </span>
+                            </span>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+                        <div class="widget_summary">
+                          <div class="w_left w_25">
+                            <span>Unresolved</span>
+                          </div>
+                          <div class="w_center w_55">
+                            <div class="progress">
+                              <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 
+                              <?php
+                                $unresolved = 0;
+                                foreach ($airport_concierge as $my_airport_concierge) {
+                                  if($my_airport_concierge->status == "Unresolved"){
+                                    $unresolved++;
+                                  }
+                                }  
+                                echo ($unresolved/count($airport_concierge)) * 100 ;?>%">
+                                <span class="sr-only">60% Complete</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="w_right w_20">
+                            <span>
+                            <?php
+                                $unresolved = 0;
+                                foreach ($airport_concierge as $my_airport_concierge) {
+                                  if($my_airport_concierge->status == "Unresolved"){
+                                    $unresolved++;
+                                  }
+                                }  
+                              ?>
+                              {{ $unresolved }} 
                             </span>
                             </span>
                           </div>
@@ -150,7 +185,7 @@
                     </div>
                   </div>
                   <div class="col-md-4">
-                    <div class="x_panel tile" style="height: 180px;">
+                    <div class="x_panel tile" style="height: 202px;">
                       
                       <div class="x_content">
                       <h4><b>Bespoke Product  Request Status</b></h4>
@@ -227,19 +262,19 @@
                         </div>
                         <div class="widget_summary">
                           <div class="w_left w_25">
-                            <span>Completed</span>
+                            <span>Resolved</span>
                           </div>
                           <div class="w_center w_55">
                             <div class="progress">
                               <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 
                               <?php
-                                $completed = 0;
+                                $resolved = 0;
                                 foreach ($bespoke_product_requests as $my_bespoke_product_requests) {
-                                  if($my_bespoke_product_requests->status == "Completed"){
-                                    $completed++;
+                                  if($my_bespoke_product_requests->status == "Resolved"){
+                                    $resolved++;
                                   }
                                 }  
-                                echo ($completed/count($bespoke_product_requests)) * 100 ;?>%">
+                                echo ($resolved/count($bespoke_product_requests)) * 100 ;?>%">
                                 <span class="sr-only">60% Complete</span>
                               </div>
                             </div>
@@ -247,14 +282,49 @@
                           <div class="w_right w_20">
                             <span>
                             <?php
-                                $completed = 0;
+                                $resolved = 0;
                                 foreach ($bespoke_product_requests as $my_bespoke_product_requests) {
-                                  if($my_bespoke_product_requests->status == "Completed"){
-                                    $completed++;
+                                  if($my_bespoke_product_requests->status == "Resolved"){
+                                    $resolved++;
                                   }
                                 }  
                               ?>
-                              {{ $completed }} 
+                              {{ $resolved }} 
+                            </span>
+                            </span>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+                        <div class="widget_summary">
+                          <div class="w_left w_25">
+                            <span>Unresolved</span>
+                          </div>
+                          <div class="w_center w_55">
+                            <div class="progress">
+                              <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 
+                              <?php
+                                $unresolved = 0;
+                                foreach ($bespoke_product_requests as $my_bespoke_product_requests) {
+                                  if($my_bespoke_product_requests->status == "Unresolved"){
+                                    $unresolved++;
+                                  }
+                                }  
+                                echo ($unresolved/count($bespoke_product_requests)) * 100 ;?>%">
+                                <span class="sr-only">60% Complete</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="w_right w_20">
+                            <span>
+                            <?php
+                                $unresolved = 0;
+                                foreach ($bespoke_product_requests as $my_bespoke_product_requests) {
+                                  if($my_bespoke_product_requests->status == "Unresolved"){
+                                    $unresolved++;
+                                  }
+                                }  
+                              ?>
+                              {{ $unresolved }} 
                             </span>
                             </span>
                           </div>
@@ -265,7 +335,7 @@
                     </div>
                   </div>
                   <div class="col-md-4">
-                    <div class="x_panel tile" style="height: 180px;">
+                    <div class="x_panel tile" style="height: 202px;">
                       
                       <div class="x_content">
                       <h4><b>Bespoke Travel  Request Status</b></h4>
@@ -342,19 +412,19 @@
                         </div>
                         <div class="widget_summary">
                           <div class="w_left w_25">
-                            <span>Completed</span>
+                            <span>Resolved</span>
                           </div>
                           <div class="w_center w_55">
                             <div class="progress">
                               <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 
                               <?php
-                                $completed = 0;
+                                $resolved = 0;
                                 foreach ($bespoke_travel as $my_bespoke_travel) {
-                                  if($my_bespoke_travel->status == "Completed"){
-                                    $completed++;
+                                  if($my_bespoke_travel->status == "Resolved"){
+                                    $resolved++;
                                   }
                                 }  
-                                echo ($completed/count($bespoke_travel)) * 100 ;?>%">
+                                echo ($resolved/count($bespoke_travel)) * 100 ;?>%">
                                 <span class="sr-only">60% Complete</span>
                               </div>
                             </div>
@@ -362,14 +432,50 @@
                           <div class="w_right w_20">
                             <span>
                             <?php
-                                $completed = 0;
+                                $resolved = 0;
                                 foreach ($bespoke_travel as $my_bespoke_travel) {
-                                  if($my_bespoke_travel->status == "Completed"){
-                                    $completed++;
+                                  if($my_bespoke_travel->status == "Resolved"){
+                                    $resolved++;
                                   }
                                 }  
                               ?>
-                              {{ $completed }} 
+                              {{ $resolved }} 
+                            </span>
+                            </span>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+
+                        <div class="widget_summary">
+                          <div class="w_left w_25">
+                            <span>Unresolved</span>
+                          </div>
+                          <div class="w_center w_55">
+                            <div class="progress">
+                              <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 
+                              <?php
+                                $unresolved = 0;
+                                foreach ($bespoke_travel as $my_bespoke_travel) {
+                                  if($my_bespoke_travel->status == "Unresolved"){
+                                    $unresolved++;
+                                  }
+                                }  
+                                echo ($unresolved/count($bespoke_travel)) * 100 ;?>%">
+                                <span class="sr-only">60% Complete</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="w_right w_20">
+                            <span>
+                            <?php
+                                $unresolved = 0;
+                                foreach ($bespoke_travel as $my_bespoke_travel) {
+                                  if($my_bespoke_travel->status == "Unresolved"){
+                                    $unresolved++;
+                                  }
+                                }  
+                              ?>
+                              {{ $unresolved }} 
                             </span>
                             </span>
                           </div>
@@ -381,7 +487,7 @@
                   </div>
                 </div> 
                 <div class="col-md-4">
-                    <div class="x_panel tile" style="height: 180px;">
+                    <div class="x_panel tile" style="height: 202px;">
                       
                       <div class="x_content">
                       <h4><b>Flight Bookings  Request Status</b></h4>
@@ -458,19 +564,19 @@
                         </div>
                         <div class="widget_summary">
                           <div class="w_left w_25">
-                            <span>Completed</span>
+                            <span>Resolved</span>
                           </div>
                           <div class="w_center w_55">
                             <div class="progress">
                               <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 
                               <?php
-                                $completed = 0;
+                                $resolved = 0;
                                 foreach ($flight_bookings as $request) {
-                                  if($request->status == "Completed"){
-                                    $completed++;
+                                  if($request->status == "Resolved"){
+                                    $resolved++;
                                   }
                                 }  
-                                echo ($completed/count($flight_bookings)) * 100 ;?>%">
+                                echo ($resolved/count($flight_bookings)) * 100 ;?>%">
                                 <span class="sr-only">60% Complete</span>
                               </div>
                             </div>
@@ -478,25 +584,60 @@
                           <div class="w_right w_20">
                             <span>
                             <?php
-                                $completed = 0;
+                                $resolved = 0;
                                 foreach ($flight_bookings as $request) {
-                                  if($request->status == "Completed"){
-                                    $completed++;
+                                  if($request->status == "Resolved"){
+                                    $resolved++;
                                   }
                                 }  
                               ?>
-                              {{ $completed }} 
+                              {{ $resolved }} 
                             </span>
                             </span>
                           </div>
                           <div class="clearfix"></div>
                         </div>
+                        <div class="widget_summary">
+                          <div class="w_left w_25">
+                            <span>Unresolved</span>
+                          </div>
+                          <div class="w_center w_55">
+                            <div class="progress">
+                              <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 
+                              <?php
+                                $unresolved = 0;
+                                foreach ($flight_bookings as $request) {
+                                  if($request->status == "Unresolved"){
+                                    $unresolved++;
+                                  }
+                                }  
+                                echo ($unresolved/count($flight_bookings)) * 100 ;?>%">
+                                <span class="sr-only">60% Complete</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="w_right w_20">
+                            <span>
+                            <?php
+                                $unresolved = 0;
+                                foreach ($flight_bookings as $request) {
+                                  if($request->status == "Unresolved"){
+                                    $unresolved++;
+                                  }
+                                }  
+                              ?>
+                              {{ $unresolved }} 
+                            </span>
+                            </span>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>                     
                         
                       </div>
                     </div>
                   </div> 
                   <div class="col-md-4">
-                    <div class="x_panel tile" style="height: 180px;">
+                    <div class="x_panel tile" style="height: 202px;">
                       
                       <div class="x_content">
                       <h4><b>Global VIP Event  Request Status</b></h4>
@@ -577,20 +718,20 @@
                         </div>
                         <div class="widget_summary">
                           <div class="w_left w_25">
-                            <span>Completed</span>
+                            <span>Resolved</span>
                           </div>
                           <div class="w_center w_55">
                             <div class="progress">
                               <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 
                               <?php
-                                $completed = 0;
+                                $resolved = 0;
                                 foreach ($events as $my_events) {
-                                  if($my_events->status == "Completed"){
-                                    $completed++;
+                                  if($my_events->status == "Resolved"){
+                                    $resolved++;
                                   }
                                 }  
                                 if(count($events > 0)){
-                                  echo ($completed/count($events)) * 100 ;
+                                  echo ($resolved/count($events)) * 100 ;
                                 }  ?>%">
                                 <span class="sr-only">60% Complete</span>
                               </div>
@@ -599,14 +740,52 @@
                           <div class="w_right w_20">
                             <span>
                             <?php
-                                $completed = 0;
+                                $resolved = 0;
                                 foreach ($events as $my_events) {
-                                  if($my_events->status == "Completed"){
-                                    $completed++;
+                                  if($my_events->status == "Resolved"){
+                                    $resolved++;
                                   }
                                 }  
                               ?>
-                              {{ $completed }} 
+                              {{ $resolved }} 
+                            </span>
+                            </span>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+
+                        <div class="widget_summary">
+                          <div class="w_left w_25">
+                            <span>Unresolved</span>
+                          </div>
+                          <div class="w_center w_55">
+                            <div class="progress">
+                              <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 
+                              <?php
+                                $unresolved = 0;
+                                foreach ($events as $my_events) {
+                                  if($my_events->status == "Unresolved"){
+                                    $unresolved++;
+                                  }
+                                }  
+                                if(count($events > 0)){
+                                  echo ($unresolved/count($events)) * 100 ;
+                                }  ?>%">
+                                <span class="sr-only">60% Complete</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="w_right w_20">
+                            <span>
+                            <?php
+                                $unresolved = 0;
+                                foreach ($events as $my_events) {
+                                  if($my_events->status == "Unresolved"){
+                                    $unresolved++;
+                                  }
+                                }  
+                              ?>
+                              {{ $unresolved }} 
                             </span>
                             </span>
                           </div>
@@ -617,7 +796,7 @@
                     </div>
                   </div>
                   <div class="col-md-4">
-                    <div class="x_panel tile" style="height: 180px;">
+                    <div class="x_panel tile" style="height: 202px;">
                       
                       <div class="x_content">
                       <h4><b>Private Parties  Request Status</b></h4>
@@ -698,20 +877,20 @@
                         </div>
                         <div class="widget_summary">
                           <div class="w_left w_25">
-                            <span>Completed</span>
+                            <span>Resolved</span>
                           </div>
                           <div class="w_center w_55">
                             <div class="progress">
                               <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 
                               <?php
-                                $completed = 0;
+                                $resolved = 0;
                                 foreach ($events as $my_events) {
-                                  if($my_events->status == "Completed"){
-                                    $completed++;
+                                  if($my_events->status == "Resolved"){
+                                    $resolved++;
                                   }
                                 }  
                                 if(count($events > 0)){
-                                  echo ($completed/count($events)) * 100 ;
+                                  echo ($resolved/count($events)) * 100 ;
                                 }?>%">
                                 <span class="sr-only">60% Complete</span>
                               </div>
@@ -720,14 +899,51 @@
                           <div class="w_right w_20">
                             <span>
                             <?php
-                                $completed = 0;
+                                $resolved = 0;
                                 foreach ($events as $my_events) {
-                                  if($my_events->status == "Completed"){
-                                    $completed++;
+                                  if($my_events->status == "Resolved"){
+                                    $resolved++;
                                   }
                                 }  
                               ?>
-                              {{ $completed }} 
+                              {{ $resolved }} 
+                            </span>
+                            </span>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+                        <div class="widget_summary">
+                          <div class="w_left w_25">
+                            <span>Unresolved</span>
+                          </div>
+                          <div class="w_center w_55">
+                            <div class="progress">
+                              <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 
+                              <?php
+                                $unresolved = 0;
+                                foreach ($events as $my_events) {
+                                  if($my_events->status == "Unresolved"){
+                                    $unresolved++;
+                                  }
+                                }  
+                                if(count($events > 0)){
+                                  echo ($unresolved/count($events)) * 100 ;
+                                }?>%">
+                                <span class="sr-only">60% Complete</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="w_right w_20">
+                            <span>
+                            <?php
+                                $unresolved = 0;
+                                foreach ($events as $my_events) {
+                                  if($my_events->status == "Unresolved"){
+                                    $unresolved++;
+                                  }
+                                }  
+                              ?>
+                              {{ $unresolved }} 
                             </span>
                             </span>
                           </div>
@@ -738,7 +954,7 @@
                     </div>
                   </div>
                   <div class="col-md-4">
-                    <div class="x_panel tile" style="height: 180px;">     
+                    <div class="x_panel tile" style="height: 202px;">     
                       <div class="x_content">
                       <h4><b>Luxury Experience  Request Status</b></h4>
                         <div class="widget_summary">
@@ -818,20 +1034,20 @@
                         </div>
                         <div class="widget_summary">
                           <div class="w_left w_25">
-                            <span>Completed</span>
+                            <span>Resolved</span>
                           </div>
                           <div class="w_center w_55">
                             <div class="progress">
                               <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 
                               <?php
-                                $completed = 0;
+                                $resolved = 0;
                                 foreach ($requests as $request) {
-                                  if($request->status == "Completed"){
-                                    $completed++;
+                                  if($request->status == "Resolved"){
+                                    $resolved++;
                                   }
                                 } 
                                 if(count($requests > 0)){ 
-                                  echo ($completed/count($requests)) * 100 ;
+                                  echo ($resolved/count($requests)) * 100 ;
                                 }  ?>%">
                                 <span class="sr-only">60% Complete</span>
                               </div>
@@ -840,14 +1056,51 @@
                           <div class="w_right w_20">
                             <span>
                             <?php
-                                $completed = 0;
+                                $resolved = 0;
                                 foreach ($requests as $request) {
-                                  if($request->status == "Completed"){
-                                    $completed++;
+                                  if($request->status == "Resolved"){
+                                    $resolved++;
                                   }
                                 }  
                               ?>
-                              {{ $completed }} 
+                              {{ $resolved }} 
+                            </span>
+                            </span>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+                        <div class="widget_summary">
+                          <div class="w_left w_25">
+                            <span>Unresolved</span>
+                          </div>
+                          <div class="w_center w_55">
+                            <div class="progress">
+                              <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 
+                              <?php
+                                $unresolved = 0;
+                                foreach ($requests as $request) {
+                                  if($request->status == "Unresolved"){
+                                    $unresolved++;
+                                  }
+                                } 
+                                if(count($requests > 0)){ 
+                                  echo ($unresolved/count($requests)) * 100 ;
+                                }  ?>%">
+                                <span class="sr-only">60% Complete</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="w_right w_20">
+                            <span>
+                            <?php
+                                $unresolved = 0;
+                                foreach ($requests as $request) {
+                                  if($request->status == "Unresolved"){
+                                    $unresolved++;
+                                  }
+                                }  
+                              ?>
+                              {{ $unresolved }} 
                             </span>
                             </span>
                           </div>
@@ -858,7 +1111,7 @@
                     </div>
                   </div>
                   <div class="col-md-4">
-                    <div class="x_panel tile" style="height: 180px;">
+                    <div class="x_panel tile" style="height: 202px;">
                       
                       <div class="x_content">
                       <h4><b>VPA Requests Status</b></h4>
@@ -935,19 +1188,19 @@
                         </div>
                         <div class="widget_summary">
                           <div class="w_left w_25">
-                            <span>Completed</span>
+                            <span>Resolved</span>
                           </div>
                           <div class="w_center w_55">
                             <div class="progress">
                               <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 
                               <?php
-                                $completed = 0;
+                                $resolved = 0;
                                 foreach ($vpas as $vpa) {
-                                  if($vpa->status == "Completed"){
-                                    $completed++;
+                                  if($vpa->status == "Resolved"){
+                                    $resolved++;
                                   }
                                 }  
-                                echo ($completed/count($vpas)) * 100 ;?>%">
+                                echo ($resolved/count($vpas)) * 100 ;?>%">
                                 <span class="sr-only">60% Complete</span>
                               </div>
                             </div>
@@ -955,14 +1208,50 @@
                           <div class="w_right w_20">
                             <span>
                             <?php
-                                $completed = 0;
+                                $resolved = 0;
                                 foreach ($vpas as $vpa) {
-                                  if($vpa->status == "Completed"){
-                                    $completed++;
+                                  if($vpa->status == "Resolved"){
+                                    $resolved++;
                                   }
                                 }  
                               ?>
-                              {{ $completed }} 
+                              {{ $resolved }} 
+                            </span>
+                            </span>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+
+                        <div class="widget_summary">
+                          <div class="w_left w_25">
+                            <span>Unresolved</span>
+                          </div>
+                          <div class="w_center w_55">
+                            <div class="progress">
+                              <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 
+                              <?php
+                                $unresolved = 0;
+                                foreach ($vpas as $vpa) {
+                                  if($vpa->status == "Unresolved"){
+                                    $unresolved++;
+                                  }
+                                }  
+                                echo ($unresolved/count($vpas)) * 100 ;?>%">
+                                <span class="sr-only">60% Complete</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="w_right w_20">
+                            <span>
+                            <?php
+                                $unresolved = 0;
+                                foreach ($vpas as $vpa) {
+                                  if($vpa->status == "Unresolved"){
+                                    $unresolved++;
+                                  }
+                                }  
+                              ?>
+                              {{ $unresolved }} 
                             </span>
                             </span>
                           </div>
@@ -973,7 +1262,7 @@
                     </div>
                   </div>
                   <div class="col-md-4">
-                    <div class="x_panel tile" style="height: 180px;">
+                    <div class="x_panel tile" style="height: 202px;">
                       
                       <div class="x_content">
                       <h4><b>Waitlised Product Requests Status</b></h4>
@@ -1054,20 +1343,20 @@
                         </div>
                         <div class="widget_summary">
                           <div class="w_left w_25">
-                            <span>Completed</span>
+                            <span>Resolved</span>
                           </div>
                           <div class="w_center w_55">
                             <div class="progress">
                               <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 
                               <?php
-                                $completed = 0;
+                                $resolved = 0;
                                 foreach ($waitlisted_product_requests as $my_waitlisted_product_requests) {
-                                  if($my_waitlisted_product_requests->status == "Completed"){
-                                    $completed++;
+                                  if($my_waitlisted_product_requests->status == "Resolved"){
+                                    $resolved++;
                                   }
                                 } 
                                 if(count($waitlisted_product_requests > 0)){ 
-                                echo ($completed/count($waitlisted_product_requests)) * 100 ;
+                                echo ($resolved/count($waitlisted_product_requests)) * 100 ;
                                 }?>%">
                                 <span class="sr-only">60% Complete</span>
                               </div>
@@ -1076,14 +1365,51 @@
                           <div class="w_right w_20">
                             <span>
                             <?php
-                                $completed = 0;
+                                $resolved = 0;
                                 foreach ($waitlisted_product_requests as $my_waitlisted_product_requests) {
-                                  if($my_waitlisted_product_requests->status == "Completed"){
-                                    $completed++;
+                                  if($my_waitlisted_product_requests->status == "Resolved"){
+                                    $resolved++;
                                   }
                                 }  
                               ?>
-                              {{ $completed }} 
+                              {{ $resolved }} 
+                            </span>
+                            </span>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+                        <div class="widget_summary">
+                          <div class="w_left w_25">
+                            <span>Unresolved</span>
+                          </div>
+                          <div class="w_center w_55">
+                            <div class="progress">
+                              <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 
+                              <?php
+                                $unresolved = 0;
+                                foreach ($waitlisted_product_requests as $my_waitlisted_product_requests) {
+                                  if($my_waitlisted_product_requests->status == "Unresolved"){
+                                    $unresolved++;
+                                  }
+                                } 
+                                if(count($waitlisted_product_requests > 0)){ 
+                                echo ($unresolved/count($waitlisted_product_requests)) * 100 ;
+                                }?>%">
+                                <span class="sr-only">60% Complete</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="w_right w_20">
+                            <span>
+                            <?php
+                                $unresolved = 0;
+                                foreach ($waitlisted_product_requests as $my_waitlisted_product_requests) {
+                                  if($my_waitlisted_product_requests->status == "Unresolved"){
+                                    $unresolved++;
+                                  }
+                                }  
+                              ?>
+                              {{ $unresolved }} 
                             </span>
                             </span>
                           </div>

@@ -20,6 +20,9 @@
       function updateStatus(key){
         document.getElementById('updateStatus'+key).submit();
       }
+      function openLink(data){
+        location.href = "admin_comment/globalvipevents_info_request/"+data.id;
+      }
     </script>  
   </head>
 
@@ -50,7 +53,7 @@
                 @endif
                 <div class="row">
                   <div class="col-md-10">
-                    <div class="x_panel tile" style="height: 180px;">
+                    <div class="x_panel tile" style="height: 202px;">
                       
                       <div class="x_content">
                       <h4><b>Requests Status</b></h4>
@@ -60,7 +63,7 @@
                           </div>
                           <div class="w_center w_55">
                             <div class="progress">
-                              <div class="progress-bar bg-green" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 
+                              <div class="progress-bar bg-blue" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 
                               <?php
                                 $pending = 0;
                                 foreach ($events as $my_events) {
@@ -99,7 +102,7 @@
                           </div>
                           <div class="w_center w_55">
                             <div class="progress">
-                              <div class="progress-bar bg-green" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 
+                              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 
                               <?php
                                 $in_progress = 0;
                                 foreach ($events as $my_events) {
@@ -131,20 +134,20 @@
                         </div>
                         <div class="widget_summary">
                           <div class="w_left w_25">
-                            <span>Completed</span>
+                            <span>Resolved</span>
                           </div>
                           <div class="w_center w_55">
                             <div class="progress">
                               <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 
                               <?php
-                                $completed = 0;
+                                $resolved = 0;
                                 foreach ($events as $my_events) {
-                                  if($my_events->status == "Completed"){
-                                    $completed++;
+                                  if($my_events->status == "Resolved"){
+                                    $resolved++;
                                   }
                                 }  
                                 if(count($events > 0)){
-                                  echo ($completed/count($events)) * 100 ;
+                                  echo ($resolved/count($events)) * 100 ;
                                 }  ?>%">
                                 <span class="sr-only">60% Complete</span>
                               </div>
@@ -153,14 +156,52 @@
                           <div class="w_right w_20">
                             <span>
                             <?php
-                                $completed = 0;
+                                $resolved = 0;
                                 foreach ($events as $my_events) {
-                                  if($my_events->status == "Completed"){
-                                    $completed++;
+                                  if($my_events->status == "Resolved"){
+                                    $resolved++;
                                   }
                                 }  
                               ?>
-                              {{ $completed }} 
+                              {{ $resolved }} 
+                            </span>
+                            </span>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+
+                        <div class="widget_summary">
+                          <div class="w_left w_25">
+                            <span>Unresolved</span>
+                          </div>
+                          <div class="w_center w_55">
+                            <div class="progress">
+                              <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 
+                              <?php
+                                $unresolved = 0;
+                                foreach ($events as $my_events) {
+                                  if($my_events->status == "Unresolved"){
+                                    $unresolved++;
+                                  }
+                                }  
+                                if(count($events > 0)){
+                                  echo ($unresolved/count($events)) * 100 ;
+                                }  ?>%">
+                                <span class="sr-only">60% Complete</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="w_right w_20">
+                            <span>
+                            <?php
+                                $unresolved = 0;
+                                foreach ($events as $my_events) {
+                                  if($my_events->status == "Unresolved"){
+                                    $unresolved++;
+                                  }
+                                }  
+                              ?>
+                              {{ $unresolved }} 
                             </span>
                             </span>
                           </div>
@@ -180,7 +221,9 @@
                     <table id="datatable-buttons" class="table table-striped table-bordered">
                       <thead>
                         <tr>
+                          <th>Id</th>
                           <th>Title</th>
+                          <th>Member</th>
                           <th>Location</th>
                           <th>Created</th>
                           <th>In charge </th>
@@ -193,7 +236,9 @@
                       <tbody>
                       @foreach ($events as $key => $event) 
                         <tr>
+                          <td>0000{!! $event->id !!}</td>
                           <td>{!! $event->title !!}</td>
+                          <td>{!! $event->customer_id !!}</td>
                           <td>{!! $event->country !!} {!! $event->state !!} {!! $event->city !!}</td>
                           <td>{!! $event->created_at !!}</td>
                          <td>
@@ -213,13 +258,15 @@
                                 <option style="background: yellow !important;"disabled selected>{!! $event->status !!}</option>
                                 <option value="Pending">Pending</option> 
                                 <option value="In Progress">In Progress</option> 
-                                <option value="Closed">Closed</option> 
+                                <option value="Resolved">Resolved</option> 
+                                <option value="Unresolved">Unresolved</option> 
                               </select>  
                               <input type="hidden" name="id" value="{{$event->event_id}}" />
                             </form>
                           </td>
                           <td>
                             <button class="btn btn-default btn-success source" onclick='openMyModal(<?php echo json_encode($event); ?>)' ><i class="fa fa-eye"></i></button>
+                            <button class="btn btn-default btn-success source" onclick='openLink(<?php echo json_encode($event); ?>)' ><i class="fa fa-external-link"></i></button>
                           </td>
                         </tr>
                       @endforeach  

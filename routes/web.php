@@ -19,6 +19,12 @@ Route::get('/', 'AdminsController@index')->middleware('auth');
 
 Route::get('/index', 'AdminsController@index')->middleware('auth');
 
+Route::get('admin_comment/{table}/{id}', 'CommentsController@index')->middleware('auth');
+
+Route::post('admin_comment/admin_post_comment', 'CommentsController@postComment')->middleware('auth');
+
+
+
 Route::get('admin', 'AdminsController@index')->middleware('auth');
 
 Route::get('admin_admins', 'AdminsController@admins')->middleware('auth');
@@ -26,6 +32,9 @@ Route::get('admin_admins', 'AdminsController@admins')->middleware('auth');
 Route::get('admin_groups', 'GroupsController@index')->middleware('auth');
 
 Route::get('admin_group_new', 'GroupsController@newGroup')->middleware('auth');
+
+Route::get('admin_group_post_delete/{id}', 'GroupsController@destroy')->middleware('auth');
+
 
 Route::get('admin_feeds', 'FeedsController@index')->middleware('auth');
 

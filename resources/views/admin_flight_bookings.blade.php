@@ -218,6 +218,7 @@
                           </td>
                           <td>
                             <button class="btn btn-default btn-success source" onclick='openMyModal(<?php echo json_encode($flight_booking); ?>)' ><i class="fa fa-eye"></i></button>
+                            <button class="btn btn-default btn-success source" onclick='openLink(<?php echo json_encode($request); ?>)' ><i class="fa fa-external-link"></i></button>
                           </td>
                         </tr>
                       @endforeach  
@@ -243,6 +244,9 @@
     </div>
     @include("includes.admin-index-footer-script")
     <script>
+      function openLink(data){
+          location.href = "admin_comment/flight_bookings/"+data.id;
+      }
       var myData;
       function openMyModal(data){
         console.log(data);

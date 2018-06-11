@@ -57,11 +57,12 @@
                     <table id="datatable-buttons" class="table table-striped table-bordered">
                       <thead>
                         <tr>
+                          <th>Id</th>
                           <th>Member</th>
                           <th>Created</th>
-                          <th> In charge </th>
-                          <th> Status </th>
-                          <th> Action </th>
+                          <th>In charge </th>
+                          <th>Status </th>
+                          <th>Action </th>
                         </tr>
                       </thead>
 
@@ -69,7 +70,8 @@
                       <tbody>
                       @foreach ($contacts as $key => $contact) 
                         <tr>
-                          <td>{!! $contact->firstname !!} {!! $contact->lastname !!}</td>
+                          <td>000{!! $contact->id !!}</td>
+                          <td>{!! $contact->customer_id !!}</td>
                           <td>{!! $contact->created_at !!}</td>
                           <td>
                             <form class="form-horizontal form-label-left" id="updateAdmin<?php echo $key; ?>" method="post" enctype="multipart/form-data" action="admin_contact_update_admin">
@@ -88,7 +90,8 @@
                                 <option style="background: yellow !important;"disabled selected>{!! $contact->status !!}</option>
                                 <option value="Pending">Pending</option> 
                                 <option value="In Progress">In Progress</option> 
-                                <option value="Closed">Closed</option> 
+                                <option value="Resolved">Resolved</option> 
+                                <option value="Unresolved">Unresolved</option> 
                               </select>  
                               <input type="hidden" name="id" value="{{$contact->id}}" />
                             </form>

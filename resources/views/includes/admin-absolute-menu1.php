@@ -1,7 +1,7 @@
 <!-- menu profile quick info -->
 <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="../images/<?php echo $user->avatar; ?>" width="60px" height="60px" alt="..." class="img-circle profile_img">
+                <img src="images/<?php echo $user->avatar; ?>" width="60px" height="60px" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -16,87 +16,87 @@
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <ul class="nav side-menu">
-                  <li><a href="../admin"><i class="fa fa-home"></i> Home </a>
+                  <li><a href="../../admin"><i class="fa fa-home"></i> Home </a>
                   </li>
-                  <li><a href="../admin_admins"><i class="fa fa-user"></i> Admin Users </a>
+                  <li><a href="../../admin_admins"><i class="fa fa-user"></i> Admin Users </a>
                   </li>
-                  <li><a href="../admin_customers"><i class="fa fa-user"></i> Members </a>
+                  <li><a href="../../admin_customers"><i class="fa fa-user"></i> Members </a>
                   </li>
                   <li><a><i class="fa fa-shopping-cart"></i> Partners <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="../admin_merchants">Merchants</a></li>
-                      <li><a href="../admin_merchant_categories">Manage Category</a></li>
-                      <li><a href="../admin_merchants_offers">Offers</a></li>
+                      <li><a href="../../admin_merchants">Merchants</a></li>
+                      <li><a href="../../admin_merchant_categories">Manage Category</a></li>
+                      <li><a href="../../admin_merchants_offers">Offers</a></li>
                     </ul>
                   </li>
-                  <li><a href="../admin_groups"><i class="fa fa-group"></i> Interests </a>
+                  <li><a href="../../admin_groups"><i class="fa fa-group"></i> Interests </a>
                   </li>
-                  <li><a href="../admin_events"><i class="fa fa-calendar"></i> Events </a>
+                  <li><a href="../../admin_events"><i class="fa fa-calendar"></i> Events </a>
                   </li>
-                  <li><a href="../admin_experiences"><i class="fa fa-fire"></i> Experiences </a>
+                  <li><a href="../../admin_experiences"><i class="fa fa-fire"></i> Experiences </a>
                   </li>
-                  <li><a href="../admin_luxury_experiences"><i class="fa fa-fire"></i> Luxury Travels </a>
+                  <li><a href="../../admin_luxury_experiences"><i class="fa fa-fire"></i> Luxury Travels </a>
                   </li>
                   <li><a><i class="fa fa-shopping-cart"></i> Luxury Rentals <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="../admin_rentals"><i class="fa fa-car"></i> Luxury Rentals & Charters </a></li>
-                      <li><a href="../admin_rentals_requests"><i class="fa fa-car"></i> Luxury R & C Requests </a></li>
+                      <li><a href="../../admin_rentals"><i class="fa fa-car"></i> Luxury Rentals & Charters </a></li>
+                      <li><a href="../../admin_rentals_requests"><i class="fa fa-car"></i> Luxury R & C Requests </a></li>
                     </ul>
                   </li>
-                  <li><a href="../admin_vpas"><i class="fa fa-bookmark"></i> VPAs (Phoenix) </a>
+                  <li><a href="../../admin_vpas"><i class="fa fa-bookmark"></i> VPAs (Phoenix) </a>
                   </li>
-                  <li><a href="../admin_contacts"><i class="fa fa-question-circle"></i> Tickets(Contact us) </a>
+                  <li><a href="../../admin_contacts"><i class="fa fa-question-circle"></i> Tickets(Contact us) </a>
                   </li>
-                  <li><a href="../admin_feeds"><i class="fa fa-file"></i> Feeds </a>
+                  <li><a href="../../admin_feeds"><i class="fa fa-file"></i> Feeds </a>
                   </li>
                   <li><a><i class="fa fa-credit-card"></i> Get involved <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="../admin_donations"><i class="fa fa-credit-card"></i> Donations </a></li>
-                      <li><a href="../admin_volunteers"><i class="fa fa-credit-card"></i> Volunteers </a></li>
+                      <li><a href="../../admin_donations"><i class="fa fa-credit-card"></i> Donations </a></li>
+                      <li><a href="../../admin_volunteers"><i class="fa fa-credit-card"></i> Volunteers </a></li>
                     </ul>
                   </li> 
                   <li><a><i class="fa fa-plane"></i> Travels Requests<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="../admin_airport_concierge">Airport Concierge Requests</a></li>
-                      <li><a href="../admin_bespoke_travel">Bespoke Travel</a></li>
-                      <li><a href="../admin_luxury_experiences_requests">Luxury Travel Requests</a></li>
-                      <li><a href="../admin_flight_booking_requests">Flight Bookings</a></li>
+                      <li><a href="../../admin_airport_concierge">Airport Concierge Requests</a></li>
+                      <li><a href="../../admin_bespoke_travel">Bespoke Travel</a></li>
+                      <li><a href="../../admin_luxury_experiences_requests">Luxury Travel Requests</a></li>
+                      <li><a href="../../admin_flight_booking_requests">Flight Bookings</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-calendar"></i> VIP Events<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="../admin_global_vip_events">Global VIP Events</a></li>
-                      <li><a href="../admin_private_parties">Private Parties</a></li>
+                      <li><a href="../../admin_global_vip_events">Global VIP Events</a></li>
+                      <li><a href="../../admin_private_parties">Private Parties</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-universal-access"></i> VIP Access Requests<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="../admin_global_vip_events_requests">VIP Global Events Requests</a></li>
-                      <li><a href="../admin_private_party_requests">Private party Requests</a></li>
+                      <li><a href="../../admin_global_vip_events_requests">VIP Global Events Requests</a></li>
+                      <li><a href="../../admin_private_party_requests">Private party Requests</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-shopping-cart"></i> Procurement Requests<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="../admin_waitlisted_product_requests">Waitlisted Products</a></li>
-                      <li><a href="../admin_bespoke_product_requests">Bespoke Product Requests</a></li>
+                      <li><a href="../../admin_waitlisted_product_requests">Waitlisted Products</a></li>
+                      <li><a href="../../admin_bespoke_product_requests">Bespoke Product Requests</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-female"></i> P. Styling Requests<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="../admin_personal_shoppings">Personal Shopper</a></li>
-                      <li><a href="../admin_wardrobe_stylings">Wardrobe Styling</a></li>
+                      <li><a href="../../admin_personal_shoppings">Personal Shopper</a></li>
+                      <li><a href="../../admin_wardrobe_stylings">Wardrobe Styling</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-product-hunt"></i> Bespoke Product <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="../admin_bespoke_products">Bespoke Product</a></li>
-                      <li><a href="../admin_bespoke_product_categories">Bespoke Product Categories</a></li>
+                      <li><a href="../../admin_bespoke_products">Bespoke Product</a></li>
+                      <li><a href="../../admin_bespoke_product_categories">Bespoke Product Categories</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-product-hunt"></i> Waitlisted Product <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="../admin_waitlisted_products">Waitlisted Product</a></li>
-                      <li><a href="../admin_waitlisted_product_categories">Waitlisted Product Categories</a></li>
+                      <li><a href="../../admin_waitlisted_products">Waitlisted Product</a></li>
+                      <li><a href="../../admin_waitlisted_product_categories">Waitlisted Product Categories</a></li>
                     </ul>
                   </li>
                   
@@ -122,7 +122,7 @@
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="../logout">
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="../../logout">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -141,7 +141,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="../images/<?php echo $user->avatar; ?>" width="60px" height="60px" alt=""><?php echo $user->name; ?>
+                    <img src="images/<?php echo $user->avatar; ?>" width="60px" height="60px" alt=""><?php echo $user->name; ?>
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -153,7 +153,7 @@
                       </a>
                     </li>
                     <li><a href="javascript:;">Help</a></li>
-                    <li><a href="../logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="../../logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
 

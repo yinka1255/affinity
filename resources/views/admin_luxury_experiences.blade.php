@@ -56,6 +56,8 @@
                         <tr>
                           <th>Avatar</th>
                           <th>Name</th>
+                          <th>Country</th>
+                          <th>State</th>
                           <th>Venue</th>
                           <th>Price From</th>
                           <th>Date</th>
@@ -73,6 +75,8 @@
                             </div>
                           </td>
                           <td>{!! $experience->experience_name !!}</td>
+                          <td>{!! $experience->country !!}</td>
+                          <td>{!! $experience->state !!}</td>
                           <td>{!! $experience->venue !!}</td>
                           <td>{!! $experience->price !!}</td>
                           <td>{!! $experience->experience_start_date !!} to {!! $experience->experience_end_date !!}</td>

@@ -3395,7 +3395,7 @@ ul.project_files li a i {
     font-size: 35px
 }
 .login {
-    background: #F7F7F7
+    background: #2A3F54;
 }
 .login .fa-paw {
     font-size: 26px
@@ -3474,13 +3474,20 @@ form:after {
     clear: both;
     visibility: hidden
 }
+
+.table{
+    width: 100% !important;
+}
 .login_content {
     margin: 0 auto;
     padding: 25px 0 0;
     position: relative;
     text-align: center;
-    text-shadow: 0 1px 0 #fff;
+    /*text-shadow: 0 1px 0 #fff;*/
     min-width: 280px
+}
+.separator p{
+    color: #fff !important;
 }
 .login_content a,
 .login_content .btn-default:hover {

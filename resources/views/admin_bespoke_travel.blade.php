@@ -174,14 +174,17 @@
                     <table id="datatable-buttons" class="table table-striped table-bordered">
                       <thead>
                         <tr>
+                          <th>Id</th>
+                          <th>Member</th>
                           <th>Occassion</th>
                           <th>Created</th>
                           <th>Duration</th>
                           <th>Group Size</th>
                           <th>Date</th>
                           <th>Destination </th>
-                          <th> In charge </th>
-                          <th> Status </th>
+                          <th>In charge </th>
+                          <th>Status </th>
+                          <th></th>
                         </tr>
                       </thead>
 
@@ -189,6 +192,8 @@
                       <tbody>
                       @foreach ($bespoke_travel as $key=> $bespoke_travel) 
                         <tr>
+                          <td>{!! $bespoke_travel->id !!}</td>
+                          <td>{!! $bespoke_travel->customer_id !!}</td>
                           <td>{!! $bespoke_travel->occassion !!}</td>
                           <td>{!! $bespoke_travel->created_at !!}</td>
                           <td>{!! $bespoke_travel->duration !!}</td>
@@ -217,6 +222,9 @@
                               <input type="hidden" name="id" value="{{$bespoke_travel->id}}" />
                             </form>
                           </td>
+                          <td>
+                            <button class="btn btn-default btn-success source" onclick='openLink(<?php echo json_encode($bespoke_travel); ?>)' ><i class="fa fa-external-link"></i></button>
+                          </td>
                         </tr>
                       @endforeach  
                       </tbody>
@@ -240,6 +248,10 @@
       </div>
     </div>
     @include("includes.admin-index-footer-script")
-    
+    <script>
+      function openLink(data){
+          location.href = "admin_comment/bespoke_travels/"+data.id;
+        }
+    </script>    
   </body>
 </html>

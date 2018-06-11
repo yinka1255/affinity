@@ -50,7 +50,7 @@
                 @endif
                 <div class="row">
                   <div class="col-md-10">
-                    <div class="x_panel tile" style="height: 180px;">
+                    <div class="x_panel tile" style="height: 205px;">
                       
                       <div class="x_content">
                       <h4><b>Requests Status</b></h4>
@@ -60,7 +60,7 @@
                           </div>
                           <div class="w_center w_55">
                             <div class="progress">
-                              <div class="progress-bar bg-green" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 
+                              <div class="progress-bar bg-blue" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 
                               <?php
                                 $pending = 0;
                                 foreach ($airport_concierge as $my_airport_concierge) {
@@ -97,7 +97,7 @@
                           </div>
                           <div class="w_center w_55">
                             <div class="progress">
-                              <div class="progress-bar bg-green" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 
+                              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 
                               <?php
                                 $in_progress = 0;
                                 foreach ($airport_concierge as $my_airport_concierge) {
@@ -127,34 +127,70 @@
                         </div>
                         <div class="widget_summary">
                           <div class="w_left w_25">
-                            <span>Completed</span>
+                            <span>Resolved</span>
                           </div>
                           <div class="w_center w_55">
                             <div class="progress">
                               <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 
                               <?php
-                                $completed = 0;
+                                $resolved = 0;
                                 foreach ($airport_concierge as $my_airport_concierge) {
-                                  if($my_airport_concierge->status == "Completed"){
-                                    $completed++;
+                                  if($my_airport_concierge->status == "Resolved"){
+                                    $resolved++;
                                   }
                                 }  
-                                echo ($completed/count($airport_concierge)) * 100 ;?>%">
-                                <span class="sr-only">60% Complete</span>
+                                echo ($resolved/count($airport_concierge)) * 100 ;?>%">
+                                <span class="sr-only">60% Resolved</span>
                               </div>
                             </div>
                           </div>
                           <div class="w_right w_20">
                             <span>
                             <?php
-                                $completed = 0;
+                                $resolved = 0;
                                 foreach ($airport_concierge as $my_airport_concierge) {
-                                  if($my_airport_concierge->status == "Completed"){
-                                    $completed++;
+                                  if($my_airport_concierge->status == "Resolved"){
+                                    $resolved++;
                                   }
                                 }  
                               ?>
-                              {{ $completed }} 
+                              {{ $resolved }} 
+                            </span>
+                            </span>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+                        
+                        <div class="widget_summary">
+                          <div class="w_left w_25">
+                            <span>Unresolved</span>
+                          </div>
+                          <div class="w_center w_55">
+                            <div class="progress">
+                              <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 
+                              <?php
+                                $unresolved = 0;
+                                foreach ($airport_concierge as $my_airport_concierge) {
+                                  if($my_airport_concierge->status == "Unresolved"){
+                                    $unresolved++;
+                                  }
+                                }  
+                                echo ($unresolved/count($airport_concierge)) * 100 ;?>%">
+                                <span class="sr-only">60% Unresolved</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="w_right w_20">
+                            <span>
+                            <?php
+                                $unresolved = 0;
+                                foreach ($airport_concierge as $my_airport_concierge) {
+                                  if($my_airport_concierge->status == "Unresolved"){
+                                    $unresolved++;
+                                  }
+                                }  
+                              ?>
+                              {{ $unresolved }} 
                             </span>
                             </span>
                           </div>
@@ -174,15 +210,18 @@
                     <table id="datatable-buttons" class="table table-striped table-bordered">
                       <thead>
                         <tr>
+                          <th>Id</th>
                           <th>Service</th>
-                          <th>Created</th>
-                          <th>Airport</th>
+                          {{--<th>Created</th>
+                          <th>Airport</th>--}}
+                          <th>Member Id</th>
                           <th>Class</th>
                           <th>No of Passengers</th>
                           <th>Date</th>
                           <th>Additional Service </th>
-                          <th> In charge </th>
-                          <th> Status </th>
+                          <th>In charge </th>
+                          <th>Status </th>
+                          <th></th>
                         </tr>
                       </thead>
 
@@ -190,9 +229,11 @@
                       <tbody>
                       @foreach ($airport_concierge as $key => $airport_concierge) 
                         <tr>
+                          <td>0000{!! $airport_concierge->id !!}</td>
                           <td>{!! $airport_concierge->service !!}</td>
-                          <td>{!! $airport_concierge->created_at !!}</td>
-                          <td>{!! $airport_concierge->airport !!}</td>
+                          {{--<td>{!! $airport_concierge->created_at !!}</td>
+                          <td>{!! $airport_concierge->airport !!}</td>--}}
+                          <td>{!! $airport_concierge->customer_id !!}</td>
                           <td>{!! $airport_concierge->class !!}</td>
                           <td>{!! $airport_concierge->no_of_passengers !!}</td>
                           <td>{!! $airport_concierge->date !!} {!! $airport_concierge->time !!}</td>
@@ -214,10 +255,14 @@
                                 <option style="color: yellow !important;">{!! $airport_concierge->status !!}</option>
                                 <option>Pending</option> 
                                 <option>In Progress</option> 
-                                <option>Closed</option> 
+                                <option>Resolved</option> 
+                                <option>Unresolved</option> 
                               </select>  
                               <input type="hidden" name="id" value="{{$airport_concierge->id}}" />
                             </form>
+                          </td>
+                          <td>
+                          <button class="btn btn-default btn-success source" onclick='openLink(<?php echo json_encode($airport_concierge); ?>)' ><i class="fa fa-external-link"></i></button>
                           </td>
                         </tr>
                       @endforeach  
@@ -244,4 +289,9 @@
     @include("includes.admin-index-footer-script")
     
   </body>
+  <script>
+    function openLink(data){
+      location.href = "admin_comment/airport_concierges/"+data.id;
+    }  
+  </script>    
 </html>

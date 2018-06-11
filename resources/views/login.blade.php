@@ -30,7 +30,7 @@
         <div class="animate form login_form">
           <section class="login_content">
             <form method="post" action="admin_login">
-              <h1>Login</h1>
+              <img src="public/img/logo.png" style="text-align: center;width: 200px;padding: 20px;"/>
               <div>
                 <input type="text" class="form-control" name="username" placeholder="Username" required="" />
               </div>
@@ -51,7 +51,6 @@
                 <br />
 
                 <div>
-                  <h1> The Affinity Club</h1>
                   <p>©2016 All Rights Reserved. The Affinity Club. Privacy and Terms</p>
                 </div>
               </div>

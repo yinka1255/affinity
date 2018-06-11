@@ -80,14 +80,15 @@
                   @if(Session::has('success'))
                       <div class="alert alert-success"> {{Session::get('success')}} </div>
                   @endif
+                  {{--<li class="dropdown">
+                    <a href="../admin_group_posts/{!! $group->group_id !!}" style="color: #800020;"><i class="fa fa-group"></i> INTEREST POSTS</a>
+                  </li>--}}
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Edit <small>{!! $group->name !!}</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       </li>
-                      <li class="dropdown">
-                        <a href="../admin_group_posts/{!! $group->group_id !!}" style="color: #800020;"><i class="fa fa-group"></i> INTEREST POSTS</a>
-                      </li>
+                      
                     </ul>
                     <div class="clearfix"></div>
                   </div>
@@ -142,7 +143,7 @@
                 </div>
               </div>
               <div class="col-md-5">
-                <div class="x_panel" style="height: 380px;overflow: auto !important;">
+                <div class="x_panel" style="height: 359px;overflow: auto !important;">
                   <div class="x_title">
                     <h2>Gallery <small>{!! $group->name !!}</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
@@ -259,6 +260,54 @@
                 </div>
               </div>
             </div>     
+            <div class="x_panel">
+              <div class="x_title">
+                  @foreach ($group_posts as $key=>$group) 
+                  @if($key == 0)
+                  <h2>{{$group->group_name}} <small>Posts</small></h2>
+                  @endif
+                  @endforeach
+                <ul class="nav navbar-right panel_toolbox">
+                  <li class="dropdown">
+                    <a href="../admin_group_posts/{!! $group->group_id !!}" style="color: #800020;"><i class="fa fa-group"></i> INTEREST POSTS</a>
+                  </li>
+                  
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+              <div class="x_content">
+                
+                <table id="datatable-buttons" class="table table-striped table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Avatar</th>
+                      <th>Title</th>
+                      <th>Post</th>
+                      <th>Created </th>
+                      <th>Action </th>
+                    </tr>
+                  </thead>
+
+
+                  <tbody>
+                  @foreach ($group_posts as $group) 
+                    <tr>
+                      <td>
+                        <div class="profile_pic">
+                          <img src="../public/{{ $group->avatar or 'images/profile.png'}}" style="width:60px !important; height:60px;" alt="..." class="img-circle profile_img">
+                        </div>
+                      </td>
+                      <td>{!! $group->title !!}</td>
+                      <td>{!! $group->post !!}</td>
+                      <td>{!! $group->created_at !!}</td>
+                      <td><a class="btn btn-default btn-success source" href="../admin_group_post_delete/{!! $group->id !!}"><i class="fa fa-pencil"></i>Delete</a></td>
+                    </tr>
+                  @endforeach  
+                  </tbody>
+                </table>
+              </div>
+            </div>
+        
           </div>
         </div>
         <!-- /page content -->

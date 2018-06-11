@@ -97,6 +97,7 @@
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-3">Overview</label>
                         <div class="col-md-9 col-sm-9 col-xs-9">
+                          <textarea type="text" name="overview" class="resizable_textarea form-control" required placeholder="Overview...">{!! $experience->overview !!}</textarea>
                           <input type="text" name="overview" class="form-control"  value="{!! $experience->overview !!}" required>
                           <span class="fa fa-tag form-control-feedback right" aria-hidden="true"></span>
                         </div>
@@ -104,7 +105,7 @@
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-3">Need to Know</label>
                         <div class="col-md-9 col-sm-9 col-xs-9">
-                          <input type="text" name="ntk" class="form-control" value="{!! $experience->ntk !!}" required>
+                          <textarea type="text" name="ntk" class="resizable_textarea form-control" required placeholder="Need to know...">{!! $experience->ntk !!}</textarea>
                           <span class="fa fa-tag form-control-feedback right" aria-hidden="true"></span>
                         </div>
                       </div>  

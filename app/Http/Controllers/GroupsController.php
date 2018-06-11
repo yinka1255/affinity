@@ -65,12 +65,14 @@ class GroupsController extends Controller
         $members_joined = DB::table('customer_group')->where('group_id', $id)->join('customers','customers.customer_id','=','customer_group.customer_id')->select('customers.*', 'customers.avatar as customer_avatar', 'customer_group.*')->get()->toArray();
 
         $group = DB::table('groups')->where('group_id', $id)->join('admins','admins.admin_id','=','groups.group_head_id')->select('admins.name as admin_name', 'groups.*')->first();
-		
+        
+        $group_posts =  DB::table('group_posts')->where('group_posts.group_id', $id)->join('groups','groups.group_id','=','group_posts.group_id')->select('group_posts.*', 'groups.avatar as group_avatar', 'groups.name as group_name')->get()->toArray();
+
         $admins = Admin::all();
 
         $events = DB::table('events')->where('group_id', $id)->get()->toArray();
 
-        return view('admin_group_edit')->with(['user'=> $user, 'events'=> $events, 'members_joined'=> $members_joined, 'gallery'=> $gallery, 'admins'=> $admins, 'group'=> $group]);
+        return view('admin_group_edit')->with(['user'=> $user, 'group_posts'=>$group_posts, 'events'=> $events, 'members_joined'=> $members_joined, 'gallery'=> $gallery, 'admins'=> $admins, 'group'=> $group]);
     }
 
     /**
@@ -299,27 +301,17 @@ class GroupsController extends Controller
      */
     public function destroy($id)
     {
-        //
-        try
-        {
-
-            $group = Group::findOrFail($id);
+        
+        $group = GroupPost::where('id', $id)->first();
 
 
             if ($group->delete())
             {
 
-            return response()->json(['error' => false, 'message' => 'Group record deleted successfully'],200);
+            return back();
             
             }
-
-            return response()->json(['error' => true, 'message' => 'Group record could not be deleted'],200);
         
-        }
-        catch (ModelNotFoundException $ex)
-        {
-            return response()->json(['error' => true, 'message' => 'Record not found'],404);
-        }
     }
 
 

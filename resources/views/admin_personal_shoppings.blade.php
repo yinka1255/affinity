@@ -20,6 +20,9 @@
       function updateStatus(key){
         document.getElementById('updateStatus'+key).submit();
       }
+      function openLink(data){
+        location.href = "admin_comment/personal_shoppings/"+data.id;
+      } 
     </script>  
   </head>
 
@@ -50,7 +53,7 @@
                 @endif
                 <div class="row">
                   <div class="col-md-10">
-                    <div class="x_panel tile" style="height: 180px;">
+                    <div class="x_panel tile" style="height: 202px;">
                       
                       <div class="x_content">
                       <h4><b>Requests Status</b></h4>
@@ -60,7 +63,7 @@
                           </div>
                           <div class="w_center w_55">
                             <div class="progress">
-                              <div class="progress-bar bg-green" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 
+                              <div class="progress-bar bg-blue" role="progressbar"  aria-valuemin="0" aria-valuemax="100" style="width: 
                               <?php
                                 $pending = 0;
                                 foreach ($personal_shoppings as $my_personal_shoppings) {
@@ -68,7 +71,7 @@
                                     $pending++;
                                   }
                                 }  
-                                if(count($wardrobe_stylings > 0)){
+                                if(count($personal_shoppings > 0)){
                                   echo ($pending/count($personal_shoppings)) * 100 ;
                                 }  ?>%">
                                 <span class="sr-only">
@@ -99,7 +102,7 @@
                           </div>
                           <div class="w_center w_55">
                             <div class="progress">
-                              <div class="progress-bar bg-green" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 
+                              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 
                               <?php
                                 $in_progress = 0;
                                 foreach ($personal_shoppings as $my_personal_shoppings) {
@@ -107,7 +110,7 @@
                                     $in_progress++;
                                   }
                                 }  
-                                if(count($wardrobe_stylings > 0)){
+                                if(count($personal_shoppings > 0)){
                                   echo ($in_progress/count($personal_shoppings)) * 100 ;
                                 }  ?>%">
                                 <span class="sr-only">50% Complete</span>
@@ -131,20 +134,20 @@
                         </div>
                         <div class="widget_summary">
                           <div class="w_left w_25">
-                            <span>Completed</span>
+                            <span>Resolved</span>
                           </div>
                           <div class="w_center w_55">
                             <div class="progress">
                               <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 
                               <?php
-                                $completed = 0;
+                                $resolved = 0;
                                 foreach ($personal_shoppings as $my_personal_shoppings) {
-                                  if($my_personal_shoppings->status == "Completed"){
-                                    $completed++;
+                                  if($my_personal_shoppings->status == "Resolved"){
+                                    $resolved++;
                                   }
                                 } 
-                                if(count($wardrobe_stylings > 0)){   
-                                  echo ($completed/count($personal_shoppings)) * 100 ;
+                                if(count($personal_shoppings > 0)){   
+                                  echo ($resolved/count($personal_shoppings)) * 100 ;
                                 }?>%">
                                 <span class="sr-only">60% Complete</span>
                               </div>
@@ -153,14 +156,52 @@
                           <div class="w_right w_20">
                             <span>
                             <?php
-                                $completed = 0;
+                                $resolved = 0;
                                 foreach ($personal_shoppings as $my_personal_shoppings) {
-                                  if($my_personal_shoppings->status == "Completed"){
-                                    $completed++;
+                                  if($my_personal_shoppings->status == "Resolved"){
+                                    $resolved++;
                                   }
                                 }  
                               ?>
-                              {{ $completed }} 
+                              {{ $resolved }} 
+                            </span>
+                            </span>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+
+                        <div class="widget_summary">
+                          <div class="w_left w_25">
+                            <span>Unresolved</span>
+                          </div>
+                          <div class="w_center w_55">
+                            <div class="progress">
+                              <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 
+                              <?php
+                                $unresolved = 0;
+                                foreach ($personal_shoppings as $my_personal_shoppings) {
+                                  if($my_personal_shoppings->status == "Unresolved"){
+                                    $unresolved++;
+                                  }
+                                } 
+                                if(count($personal_shoppings > 0)){   
+                                  echo ($unresolved/count($personal_shoppings)) * 100 ;
+                                }?>%">
+                                <span class="sr-only">60% Complete</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="w_right w_20">
+                            <span>
+                            <?php
+                                $unresolved = 0;
+                                foreach ($personal_shoppings as $my_personal_shoppings) {
+                                  if($my_personal_shoppings->status == "Unresolved"){
+                                    $unresolved++;
+                                  }
+                                }  
+                              ?>
+                              {{ $unresolved }} 
                             </span>
                             </span>
                           </div>
@@ -182,12 +223,14 @@
                         <tr>
                           <th>Product</th>
                           <th>Budget</th>
+                          <th>Member</th>
                           <th>Expected Exp. Date</th>
                           <th>Details</th>
                           <th>Requested</th>
                           <th> Phone </th>
                           <th> In charge </th>
                           <th> Status </th>
+                          <th></th>
                         </tr>
                       </thead>
 
@@ -197,6 +240,7 @@
                         <tr>
                           <td>{!! $personal_shopping->product !!}</td>
                           <td>{!! $personal_shopping->budget !!}</td>
+                          <td>{!! $personal_shopping->customer_id !!}</td>
                           <td>{!! $personal_shopping->expected_expiry_date !!}</td>
                           <td>{!! $personal_shopping->details !!}</td>
                           <td>{!! $personal_shopping->created_at !!}</td>
@@ -218,11 +262,15 @@
                                 <option style="background: yellow !important;"disabled selected>{!! $personal_shopping->status !!}</option>
                                 <option value="Pending">Pending</option> 
                                 <option value="In Progress">In Progress</option> 
-                                <option value="Closed">Closed</option> 
+                                <option value="Resolved">Resolved</option> 
+                                <option value="Unresolved">Unresolved</option> 
                               </select>  
                               <input type="hidden" name="id" value="{{$personal_shopping->id}}" />
                             </form>
                           </td>
+                          <td>
+                            <button class="btn btn-default btn-success source" onclick='openLink(<?php echo json_encode($personal_shopping); ?>)' ><i class="fa fa-external-link"></i></button>
+                          </td>  
                         </tr>
                       @endforeach  
                       </tbody>
