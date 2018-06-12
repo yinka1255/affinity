@@ -25,6 +25,21 @@
         document.getElementById('deleteForm').submit();
       }
 
+      function getStates(){
+        $('#state').empty();
+        console.log(document.getElementById('country').value);
+            $.post("../get_state",
+            {
+                country: document.getElementById('country').value
+            },
+            function(data, status){
+              console.log(data);
+              $.each(data.states, function(i, d) {
+                $('#state').append('<option value="' + d.state + '">' + d.state + '</option>');
+              });
+            });
+      }
+    
       function deleteImage(id){
         console.log(id);
         $.confirm({

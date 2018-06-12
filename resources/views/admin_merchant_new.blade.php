@@ -13,6 +13,7 @@
     @include("includes.admin-index-head")
     <script>
       function getStates(){
+        $('#state').empty();
         console.log(document.getElementById('country').value);
             $.post("get_state",
             {
